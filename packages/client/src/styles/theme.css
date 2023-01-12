@@ -1,18 +1,28 @@
 :root {
   --yellow: 45, 90%;
-  --cyan: 190,90%;
+  --cyan: 205,90%;
   --cold-grey: 230, 20%;
   --grey: 0, 0%;
   --red: 0, 88%;
   --black: 0, 0%;
 
-  --color-text: hsl(var(--black), 0%);
+  --color-text-dark: hsl(var(--black), 0%);
+  --color-text-light: hsl(var(--black), 100%);
 
   --color-background: hsl(var(--cold-grey), 94%);
-  --color-on-background: var(--color-text);
+  --color-on-background: var(--color-text-dark);
 
   --color-surface: hsl(var(--cold-grey), 100%);
-  --color-on-surface: var(--color-text);
+  --color-on-surface: var(--color-text-dark);
+
+  --color-primary: hsl(var(--cyan), 32%);
+  --color-on-primary: var(--color-text-light);
+  
+  --color-primary-dark: hsl(var(--cyan), 26%);
+  --color-on-primary-dark: var(--color-text-light);
+  
+  --color-primary-darker: hsl(var(--cyan), 18%);
+  --color-on-primary-darker: var(--color-text-light);
 
   --font-primary: Lato;
 

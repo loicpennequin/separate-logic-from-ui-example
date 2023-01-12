@@ -4,7 +4,11 @@ import { toFormValidator } from '@vee-validate/zod';
 import { LoginDto } from '@daria/shared';
 
 const { push } = useRouter();
-const { mutate: login, reset } = useLogin({
+const {
+  mutate: login,
+  isLoading,
+  reset
+} = useLogin({
   onSuccess() {
     push({ name: 'Home' });
   }
@@ -44,7 +48,7 @@ const onSubmit = handleSubmit(values => {
       <UiPasswordInput v-bind="bind" v-on="on" />
     </UiFormControl>
 
-    <button>Login</button>
+    <UiButtonFull :is-loading="isLoading">Login</UiButtonFull>
   </form>
 </template>
 

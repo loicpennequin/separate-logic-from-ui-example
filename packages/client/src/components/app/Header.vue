@@ -9,21 +9,40 @@ const { mutate: logout } = useLogout();
       <h1>My App</h1>
     </router-link>
 
-    <p>Hello, {{ session?.email ?? 'Anonymous' }}</p>
+    <nav>
+      <ul>
+        <template v-if="session">
+          <li>
+            <button @click="logout(undefined)">Logout</button>
+          </li>
+          <li>
+            <router-link to="/protected">Protected route</router-link>
+          </li>
+        </template>
 
-    <template v-if="session">
-      <button @click="logout(undefined)">Logout</button>
-      <router-link to="/protected">Protected route</router-link>
-    </template>
-    <template v-else>
-      <router-link to="/login">Login</router-link>
-      <router-link to="/signup">Sign up</router-link>
-    </template>
+        <template v-else>
+          <li>
+            <router-link to="/login">Login</router-link>
+          </li>
+          <li>
+            <router-link to="/signup">Sign up</router-link>
+          </li>
+        </template>
+      </ul>
+    </nav>
   </header>
 </template>
 
 <style scoped>
 header {
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  padding: var(--space-5);
+  justify-content: space-between;
+}
+
+header,
+header > nav > ul {
   display: flex;
   gap: 1em;
   align-items: center;

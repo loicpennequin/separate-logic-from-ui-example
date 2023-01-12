@@ -14,6 +14,8 @@ declare module '@vue/runtime-core' {
     QueryLoaderBase: typeof import('./src/components/QueryLoader/base.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    UiButtonBase: typeof import('./src/components/ui/button/Base.vue')['default']
+    UiButtonFull: typeof import('./src/components/ui/button/Full.vue')['default']
     UiFormControl: typeof import('./src/components/ui/form/Control.vue')['default']
     UiFormError: typeof import('./src/components/ui/form/Error.vue')['default']
     UiPasswordInput: typeof import('./src/components/ui/PasswordInput.vue')['default']

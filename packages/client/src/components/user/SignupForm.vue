@@ -5,7 +5,11 @@ import { SignUpDto } from '@daria/shared';
 import { z } from 'zod';
 
 const { push } = useRouter();
-const { mutate: login, reset } = useSignup({
+const {
+  mutate: login,
+  isLoading,
+  reset
+} = useSignup({
   onSuccess() {
     push({ name: 'Home' });
   }
@@ -63,7 +67,7 @@ const onSubmit = handleSubmit(values => {
       <UiPasswordInput v-bind="bind" v-on="on" />
     </UiFormControl>
 
-    <button>sign up</button>
+    <UiButtonFull :is-loading="isLoading">Sign up</UiButtonFull>
   </form>
 </template>
 
