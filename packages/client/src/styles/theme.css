@@ -48,6 +48,28 @@
   --space-19: 9rem;
   --space-20: 10rem;
 
+  --space-0-em: 0;
+  --space-1-em: .125em;
+  --space-2-em: .25em;
+  --space-3-em: .5em;
+  --space-4-em: .75em;
+  --space-5-em: 1em;
+  --space-6-em: 1.25em;
+  --space-7-em: 1.5em;
+  --space-8-em: 1.75em;
+  --space-9-em: 2em;
+  --space-10-em: 2.5em;
+  --space-12-em: 3.5em;
+  --space-11-em: 3em;
+  --space-13-em: 4em;
+  --space-14-em: 4.5em;
+  --space-15-em: 5em;
+  --space-16-em: 6em;
+  --space-17-em: 7em;
+  --space-18-em: 8em;
+  --space-19-em: 9em;
+  --space-20-em: 10em;
+
   --radius-0: 0;
   --radius-1: .125rem;
   --radius-2: .25rem;

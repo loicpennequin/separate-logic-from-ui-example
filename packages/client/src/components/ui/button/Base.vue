@@ -4,13 +4,26 @@ import { RouterLink } from 'vue-router/auto';
 const props = withDefaults(
   defineProps<{
     isLoading?: boolean;
+    size?: 'sm' | 'md' | 'lg' | 'xl';
   }>(),
   {
-    isLoading: false
+    isLoading: false,
+    size: 'md'
   }
 );
 const attrs = useAttrs();
 const is = computed(() => (attrs.to ? RouterLink : 'button'));
+
+const fontSize = computed(() => {
+  const lookup = {
+    sm: 2,
+    md: 3,
+    lg: 4,
+    xl: 5
+  } as const;
+
+  return `var(--text-size-${lookup[props.size]})`;
+});
 </script>
 
 <template>
@@ -22,7 +35,7 @@ const is = computed(() => (attrs.to ? RouterLink : 'button'));
     <slot name="left" />
 
     <!-- <UiSpinner v-if="isLoading" /> -->
-    <span v-if="isLoading">Loading...</span>
+    <span v-if="props.isLoading">Loading...</span>
     <slot v-else />
 
     <slot name="right" />
@@ -36,14 +49,15 @@ const is = computed(() => (attrs.to ? RouterLink : 'button'));
   text-decoration: none;
   white-space: nowrap;
   vertical-align: middle;
-  padding-inline: var(--space-4);
-  padding-block: var(--space-3);
+  font-size: v-bind(fontSize);
+  padding-inline: var(--space-4-em);
+  padding-block: var(--space-3-em);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
   border-radius: var(--radius-2);
-  border: solid 1 transparent;
+  border: solid 1px transparent;
 }
 
 .button-base:focus {
