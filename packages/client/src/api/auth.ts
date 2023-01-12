@@ -69,13 +69,15 @@ const handleRefreshToken = () => {
 };
 
 export type AuthService = typeof authService;
-
 export const authService = {
   init() {
     handleRefreshToken();
     addHeaders();
-
     return authService.refreshJwt();
+  },
+
+  set token(val: Nullable<string>) {
+    token = val;
   },
 
   get token() {

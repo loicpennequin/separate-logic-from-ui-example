@@ -3,5 +3,5 @@
 </template>
 
 <route lang="json">
-{ "name": "Login" }
+{ "name": "Login", "meta": { "publicOnly": true } }
 </route>

@@ -7,7 +7,8 @@ export const ERROR_MESSAGES = {
   INVALID_CREDENTIALS: 'The e-mail or password is incorrect.',
   INVALID_JWT: 'The access token in invalid or corrupted',
   NO_REFRESH_TOKEN: 'No refresh token provided',
-  INVALID_REFRESH_TOKEN: 'The refresh token in invalid or corrupted'
+  INVALID_REFRESH_TOKEN: 'The refresh token in invalid or corrupted',
+  EMAIL_ALREADY_IN_USE: 'An account with this email already exists'
 };
 
 export const ERROR_CODES = {

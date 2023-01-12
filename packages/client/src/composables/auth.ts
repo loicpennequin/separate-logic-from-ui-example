@@ -46,3 +46,14 @@ export const useSession = (options: UseSessionOptions = {}) => {
     queryFn: authService.getSession
   });
 };
+
+export const useAuthGuard = () => {
+  const router = useRouter();
+  router.beforeEach((to, from, next) => {
+    const jwt = authService.token;
+    if (to.meta.needsAuth && !jwt) return next('/login');
+    if (to.meta.publicOnly && jwt) return next('/');
+
+    return next();
+  });
+};

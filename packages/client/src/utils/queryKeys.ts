@@ -1,5 +1,6 @@
 export const queryKeys = {
   SESSION: () => ['session'],
   LOGIN: () => ['login'],
-  LOGOUT: () => ['logout']
+  LOGOUT: () => ['logout'],
+  SIGNUP: () => ['signup']
 } as const;
