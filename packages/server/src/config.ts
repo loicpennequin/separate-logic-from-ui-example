@@ -1,0 +1,50 @@
+import { FIFTEEN_MINUTES_IN_SECONDS } from '@daria/shared';
+import z from 'zod';
+
+const configSchema = z.object({
+  NODE_ENV: z.enum(['development', 'test', 'production']),
+  PORT: z.coerce.number(),
+  WEBSITE_URL: z.string(),
+  CORS: z.object({
+    ALLOWED_ORIGINS: z.array(z.string())
+  }),
+  SESSION: z.object({
+    SECRET: z.string()
+  }),
+  JWT: z.object({
+    SECRET: z.string(),
+    EXPIRES_IN_SECONDS: z.number()
+  }),
+  REFRESH_TOKEN: z.object({
+    SECRET: z.string(),
+    EXPIRES_IN_SECONDS: z.number(),
+    PATH: z.string(),
+    HTTPONLY: z.boolean(),
+    SAMESITE: z.enum(['none', 'lax', 'strict']),
+    SECURE: z.boolean()
+  })
+});
+
+export const config = configSchema.parse({
+  PORT: process.env.PORT ?? 5000,
+  NODE_ENV: process.env.NODE_ENV ?? 'development',
+  WEBSITE_URL: process.env.WEBSITE_URL as string,
+  CORS: {
+    ALLOWED_ORIGINS: [process.env.WEBSITE_URL]
+  },
+  SESSION: {
+    SECRET: process.env.SESSION_SECRET as string
+  },
+  JWT: {
+    SECRET: process.env.SESSION_SECRET as string,
+    EXPIRES_IN_SECONDS: FIFTEEN_MINUTES_IN_SECONDS
+  },
+  REFRESH_TOKEN: {
+    SECRET: process.env.SESSION_SECRET as string,
+    EXPIRES_IN_SECONDS: FIFTEEN_MINUTES_IN_SECONDS,
+    PATH: '/',
+    HTTPONLY: true,
+    SECURE: process.env.NODE_ENV === 'production',
+    SAMESITE: 'lax'
+  }
+});

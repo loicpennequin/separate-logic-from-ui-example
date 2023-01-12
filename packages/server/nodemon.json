@@ -1,0 +1,7 @@
+{
+  "restartable": "rs",
+  "watch": ["src", "../shared/src"],
+  "execMap": {
+    "ts": "ts-node"
+  }
+}
