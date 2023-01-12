@@ -19,7 +19,7 @@ const vModel = useVModel(props, 'modelValue', emit);
 </script>
 
 <template>
-  <div style="display: flex">
+  <div style="display: flex; background: white; width: fit-content">
     <slot name="left" />
 
     <input

@@ -23,6 +23,7 @@ export const useLogin = (options: UseLoginOptions = {}) => {
 export type UseLogoutOptions = TrpcMutationOptions<AuthService['logout']>;
 export const useLogout = (options: UseLogoutOptions = {}) => {
   const qc = useQueryClient();
+  const { push } = useRouter();
 
   return useMutation({
     ...options,
@@ -30,6 +31,7 @@ export const useLogout = (options: UseLogoutOptions = {}) => {
     mutationFn: authService.logout,
     onSuccess(...args) {
       qc.setQueryData(queryKeys.SESSION(), null);
+      push({ name: 'Home' });
 
       return unref(options.onSuccess)?.(...args);
     }

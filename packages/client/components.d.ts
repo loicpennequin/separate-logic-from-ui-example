@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     UiFormControl: typeof import('./src/components/ui/form/Control.vue')['default']
+    UiPasswordInput: typeof import('./src/components/ui/PasswordInput.vue')['default']
     UiTextInput: typeof import('./src/components/ui/TextInput.vue')['default']
   }
 }

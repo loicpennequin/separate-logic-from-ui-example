@@ -3,7 +3,12 @@ import { useForm } from 'vee-validate';
 import { toFormValidator } from '@vee-validate/zod';
 import { LoginDto } from '@daria/shared';
 
-const { mutate: login, reset } = useLogin();
+const { push } = useRouter();
+const { mutate: login, reset } = useLogin({
+  onSuccess() {
+    push({ name: 'Home' });
+  }
+});
 
 const { handleSubmit } = useForm<LoginDto>({
   validationSchema: toFormValidator(LoginDto),
@@ -36,7 +41,7 @@ const onSubmit = handleSubmit(values => {
       name="password"
       label="Password"
     >
-      <UiTextInput v-bind="bind" v-on="on" />
+      <UiPasswordInput v-bind="bind" v-on="on" />
     </UiFormControl>
 
     <button>Login</button>

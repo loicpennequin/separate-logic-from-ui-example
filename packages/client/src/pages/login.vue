@@ -1,7 +1,7 @@
 <template>
-  <p>HomePage</p>
+  <AuthLoginForm />
 </template>
 
 <route lang="json">
-{ "name": "Home" }
+{ "name": "Login" }
 </route>
