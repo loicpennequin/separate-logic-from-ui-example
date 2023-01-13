@@ -1,10 +1,11 @@
 {
   "name": "@daria/server",
   "version": "1.0.0",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "dotenv -c -- nodemon",
+    "dev": "concurrently --kill-others \"dotenv -c -- nodemon src/index.ts\" \"tsc -watch\" ",
     "build": "tsc",
+    "build:watch": "tsc -watch",
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "prisma": "dotenv -c -- prisma",
     "db:sync": "yarn prisma generate && yarn prisma db push",

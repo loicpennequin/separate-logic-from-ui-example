@@ -1,6 +1,6 @@
 import { TRPCError } from '@trpc/server';
 import { ERROR_CODES } from './constants';
-import { Context } from './trpc/context';
+import type { Context } from './trpc/context';
 import { isAppError } from './core/errorFactory';
 
 export const handleProcedureError = (err: unknown) => {

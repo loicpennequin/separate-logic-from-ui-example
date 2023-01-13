@@ -1,4 +1,4 @@
-import { Values } from '@daria/shared';
+import type { Values } from '@daria/shared';
 
 export const API_ENDPOINT = '/api';
 export const REFRESH_TOKEN_COOKIE = 'refresh_token';

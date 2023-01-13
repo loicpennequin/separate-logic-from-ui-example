@@ -1,4 +1,4 @@
-import { SignUpDto } from '@daria/shared';
+import type { SignUpDto } from '@daria/shared';
 import { hashPassword } from '../../core/encryptionService';
 import { userRepo } from '../repositories/user';
 import { errors } from '../../core/errorFactory';

@@ -22,9 +22,9 @@ export default defineConfig({
     Icons({
       compiler: 'vue3'
     }),
-    // checker({
-    //   vueTsc: { tsconfigPath: './tsconfig.app.json' }
-    // }),
+    checker({
+      vueTsc: { tsconfigPath: './tsconfig.json' }
+    }),
     AutoImport({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
       imports: [

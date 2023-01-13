@@ -1,4 +1,4 @@
-import { LoginDto } from '@daria/shared';
+import type { LoginDto } from '@daria/shared';
 import { errors } from '../../core/errorFactory';
 import { ERROR_MESSAGES } from '../../constants';
 import { comparePassword } from '../../core/encryptionService';

@@ -8,8 +8,6 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AppHeader: typeof import('./src/components/app/Header.vue')['default']
-    AppHeahder: typeof import('./src/components/app/Heahder.vue')['default']
-    AppPagetitle: typeof import('./src/components/app/Pagetitle.vue')['default']
     AppPageTitle: typeof import('./src/components/app/PageTitle.vue')['default']
     AuthLoginForm: typeof import('./src/components/auth/LoginForm.vue')['default']
     QueryLoader: typeof import('./src/components/QueryLoader/index.vue')['default']
@@ -27,7 +25,6 @@ declare module '@vue/runtime-core' {
     UiFormControl: typeof import('./src/components/ui/form/Control.vue')['default']
     UiFormError: typeof import('./src/components/ui/form/Error.vue')['default']
     UiFormFooter: typeof import('./src/components/ui/form/Footer.vue')['default']
-    UiLink: typeof import('./src/components/ui/Link.vue')['default']
     UiPasswordInput: typeof import('./src/components/ui/PasswordInput.vue')['default']
     UiSpinner: typeof import('./src/components/ui/Spinner.vue')['default']
     UiSurface: typeof import('./src/components/ui/Surface.vue')['default']

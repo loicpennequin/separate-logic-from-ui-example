@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { config } from '../../config';
-import { UUID } from '../../utils';
+import type { UUID } from '../../utils';
 import { errors } from '../../core/errorFactory';
 import { ERROR_MESSAGES } from '../../constants';
 import { randomHash } from '../../core/encryptionService';

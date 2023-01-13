@@ -1,6 +1,6 @@
 import { noop } from '@daria/shared';
 import { db } from '../../db';
-import { UUID } from '../../utils';
+import type { UUID } from '../../utils';
 
 export const passwordResetTokenRepo = {
   upsertByUserId: (id: UUID, value: string) =>

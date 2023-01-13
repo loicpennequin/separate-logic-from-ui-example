@@ -1,9 +1,9 @@
 import { config } from '../../config';
 import { REFRESH_TOKEN_COOKIE } from '../../constants';
-import { UUID } from '../../utils';
+import type { UUID } from '../../utils';
 import { refreshTokenRepo } from '../repositories/refreshToken';
 import { generateTokens } from './token';
-import { Response } from 'express';
+import type { Response } from 'express';
 
 export const getTokens = async (userId: UUID) => {
   const tokens = generateTokens(userId);

@@ -1,5 +1,11 @@
+<script setup lang="ts">
+const props = defineProps<{
+  title: string;
+}>();
+</script>
+
 <template>
-  <UiButtonBase class="button-icon">
+  <UiButtonBase class="button-icon" :title="props.title">
     <slot />
   </UiButtonBase>
 </template>
