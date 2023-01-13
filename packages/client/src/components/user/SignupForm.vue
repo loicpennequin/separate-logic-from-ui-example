@@ -39,7 +39,7 @@ const onSubmit = handleSubmit(values => {
 </script>
 
 <template>
-  <form space-y-5 @submit.prevent="onSubmit">
+  <form @submit.prevent="onSubmit" class="signup-form">
     <UiFormControl
       id="signup-mail"
       v-slot="{ on, bind }"
@@ -67,8 +67,17 @@ const onSubmit = handleSubmit(values => {
       <UiPasswordInput v-bind="bind" v-on="on" />
     </UiFormControl>
 
-    <UiButtonFull :is-loading="isLoading">Sign up</UiButtonFull>
+    <UiFormFooter>
+      <UiButtonCta :is-loading="isLoading">Sign up</UiButtonCta>
+      <UiButtonLink to="/login">I don't have an account</UiButtonLink>
+    </UiFormFooter>
   </form>
 </template>
 
-<style scoped></style>
+<style scoped>
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+</style>

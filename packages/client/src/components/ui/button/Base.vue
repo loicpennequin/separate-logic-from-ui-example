@@ -50,8 +50,7 @@ const fontSize = computed(() => {
   white-space: nowrap;
   vertical-align: middle;
   font-size: v-bind(fontSize);
-  padding-inline: var(--space-4-em);
-  padding-block: var(--space-3-em);
+  padding: var(--space-3-em) var(--space-4-em);
   display: flex;
   align-items: center;
   justify-content: center;

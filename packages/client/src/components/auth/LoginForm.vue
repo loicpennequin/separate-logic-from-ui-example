@@ -3,16 +3,7 @@ import { useForm } from 'vee-validate';
 import { toFormValidator } from '@vee-validate/zod';
 import { LoginDto } from '@daria/shared';
 
-const { push } = useRouter();
-const {
-  mutate: login,
-  isLoading,
-  reset
-} = useLogin({
-  onSuccess() {
-    push({ name: 'Home' });
-  }
-});
+const { mutate: login, isLoading, reset } = useLogin();
 
 const { handleSubmit } = useForm<LoginDto>({
   validationSchema: toFormValidator(LoginDto),
@@ -29,7 +20,7 @@ const onSubmit = handleSubmit(values => {
 </script>
 
 <template>
-  <form space-y-5 @submit.prevent="onSubmit">
+  <form @submit.prevent="onSubmit" class="login-form">
     <UiFormControl
       id="signup-mail"
       v-slot="{ on, bind }"
@@ -48,8 +39,17 @@ const onSubmit = handleSubmit(values => {
       <UiPasswordInput v-bind="bind" v-on="on" />
     </UiFormControl>
 
-    <UiButtonFull :is-loading="isLoading">Login</UiButtonFull>
+    <UiFormFooter>
+      <UiButtonCta :is-loading="isLoading">Login</UiButtonCta>
+      <UiButtonLink to="/lost-password">Forgot your password</UiButtonLink>
+    </UiFormFooter>
   </form>
 </template>
 
-<style scoped></style>
+<style scoped>
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+</style>

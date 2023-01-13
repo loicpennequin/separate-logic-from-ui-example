@@ -16,11 +16,23 @@ const on = {
 </script>
 
 <template>
-  <div>
+  <fieldset class="form-control">
     <label v-if="props.label" :for="props.id">
       {{ props.label }}
     </label>
     <slot :bind="bind" :on="on" />
     <UiFormError v-if="errorMessage && meta.touched" :error="errorMessage" />
-  </div>
+  </fieldset>
 </template>
+
+<style scoped>
+.form-control {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.form-control > label {
+  font-weight: 700;
+}
+</style>

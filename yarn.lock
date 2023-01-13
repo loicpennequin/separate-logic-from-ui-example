@@ -270,6 +270,13 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
+"@iconify-json/el@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@iconify-json/el/-/el-1.1.3.tgz#0dd3b86642918330e91f9283ca48c05202611b5d"
+  integrity sha512-ejKiBS1Tdk/bztk+IRcnu8BzRzATdCnj8d7YU9V37mRCY/sbI5M87MKoZ6eSKG80sSYC6IyG7IPm6iGTK8iMvg==
+  dependencies:
+    "@iconify/types" "*"
+
 "@iconify-json/mdi@^1.1.41":
   version "1.1.41"
   resolved "https://registry.yarnpkg.com/@iconify-json/mdi/-/mdi-1.1.41.tgz#a0afc26fd031e298baa5dc439743dffee1e3f437"
