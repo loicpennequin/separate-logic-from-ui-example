@@ -11,6 +11,7 @@
   color: var(--color-primary);
   text-decoration: underline;
   padding: 0;
+  font-weight: 400;
 }
 
 .button-link:hover {

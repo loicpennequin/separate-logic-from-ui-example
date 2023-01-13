@@ -9,9 +9,8 @@
 
 <style scoped>
 .signup-page {
-  margin-block: var(--space-8);
+  margin-block-start: var(--space-15);
 }
-
 .page-title {
   text-align: center;
   font-size: var(--text-size-6);

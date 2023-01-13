@@ -1,7 +1,7 @@
 <template>
   <UiContainer size="md" class="login-page">
     <UiSurface as="section">
-      <h2 class="page-title">Sign in to your account</h2>
+      <h2 class="page-title">Login to your account</h2>
       <AuthLoginForm />
     </UiSurface>
   </UiContainer>
@@ -9,9 +9,8 @@
 
 <style scoped>
 .login-page {
-  margin-block: var(--space-8);
+  margin-block-start: var(--space-15);
 }
-
 .page-title {
   text-align: center;
   font-size: var(--text-size-6);

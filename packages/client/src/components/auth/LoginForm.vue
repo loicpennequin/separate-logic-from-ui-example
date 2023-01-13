@@ -3,7 +3,7 @@ import { useForm } from 'vee-validate';
 import { toFormValidator } from '@vee-validate/zod';
 import { LoginDto } from '@daria/shared';
 
-const { mutate: login, isLoading, reset } = useLogin();
+const { mutate: login, isLoading, error, reset } = useLogin();
 
 const { handleSubmit } = useForm<LoginDto>({
   validationSchema: toFormValidator(LoginDto),
@@ -20,7 +20,7 @@ const onSubmit = handleSubmit(values => {
 </script>
 
 <template>
-  <form @submit.prevent="onSubmit" class="login-form">
+  <UiForm @submit.prevent="onSubmit" class="login-form">
     <UiFormControl
       id="signup-mail"
       v-slot="{ on, bind }"
@@ -43,10 +43,12 @@ const onSubmit = handleSubmit(values => {
       <UiButtonCta :is-loading="isLoading">Login</UiButtonCta>
       <UiButtonLink to="/lost-password">Forgot your password</UiButtonLink>
     </UiFormFooter>
-  </form>
+
+    <UiFormError :error="error.message" v-if="error" />
+  </UiForm>
 </template>
 
-<style scoped>
+<style scoped lang="postcss">
 .login-form {
   display: flex;
   flex-direction: column;

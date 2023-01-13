@@ -4,13 +4,20 @@ useAuthGuard();
 
 <template>
   <div class="layout">
-    <AppHeader />
+    <AppHeader class="header" />
     <main><router-view /></main>
   </div>
 </template>
 
 <style scoped>
 .layout {
-  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 </style>

@@ -8,6 +8,7 @@ const { push } = useRouter();
 const {
   mutate: login,
   isLoading,
+  error,
   reset
 } = useSignup({
   onSuccess() {
@@ -39,7 +40,7 @@ const onSubmit = handleSubmit(values => {
 </script>
 
 <template>
-  <form @submit.prevent="onSubmit" class="signup-form">
+  <UiForm @submit.prevent="onSubmit" class="signup-form">
     <UiFormControl
       id="signup-mail"
       v-slot="{ on, bind }"
@@ -71,7 +72,9 @@ const onSubmit = handleSubmit(values => {
       <UiButtonCta :is-loading="isLoading">Sign up</UiButtonCta>
       <UiButtonLink to="/login">I don't have an account</UiButtonLink>
     </UiFormFooter>
-  </form>
+
+    <UiFormError :error="error.message" v-if="error" />
+  </UiForm>
 </template>
 
 <style scoped>

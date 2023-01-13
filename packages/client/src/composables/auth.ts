@@ -5,7 +5,6 @@ import type { TrpcMutationOptions, TrpcQueryOptions } from '@/utils/types';
 export type UseLoginOptions = TrpcMutationOptions<AuthService['login']>;
 export const useLogin = (options: UseLoginOptions = {}) => {
   const qc = useQueryClient();
-  const { push } = useRouter();
 
   return useMutation({
     ...options,
@@ -13,7 +12,6 @@ export const useLogin = (options: UseLoginOptions = {}) => {
     mutationFn: authService.login,
     onSuccess(...args) {
       qc.refetchQueries({ queryKey: queryKeys.SESSION() });
-      push({ name: 'Home' });
 
       return unref(options.onSuccess)?.(...args);
     }
@@ -23,7 +21,6 @@ export const useLogin = (options: UseLoginOptions = {}) => {
 export type UseLogoutOptions = TrpcMutationOptions<AuthService['logout']>;
 export const useLogout = (options: UseLogoutOptions = {}) => {
   const qc = useQueryClient();
-  const { push } = useRouter();
 
   return useMutation({
     ...options,
@@ -31,7 +28,6 @@ export const useLogout = (options: UseLogoutOptions = {}) => {
     mutationFn: authService.logout,
     onSuccess(...args) {
       qc.setQueryData(queryKeys.SESSION(), null);
-      push({ name: 'Home' });
 
       return unref(options.onSuccess)?.(...args);
     }
@@ -49,11 +45,27 @@ export const useSession = (options: UseSessionOptions = {}) => {
 
 export const useAuthGuard = () => {
   const router = useRouter();
+  const route = useRoute();
+
+  const { data: session } = useSession();
+
   router.beforeEach((to, from, next) => {
     const jwt = authService.token;
-    if (to.meta.needsAuth && !jwt) return next('/login');
-    if (to.meta.publicOnly && jwt) return next('/');
+    if (to.meta.needsAuth && !jwt) {
+      return next({ name: 'Login', query: { from: to.fullPath } });
+    }
+    if (to.meta.publicOnly && jwt) {
+      return next((from.query.from as string) ?? '/');
+    }
 
     return next();
+  });
+
+  watchEffect(() => {
+    if (route.meta.needsAuth && !session.value)
+      router.push({ name: 'Login', query: { from: route.fullPath } });
+    if (route.meta.publicOnly && session.value) {
+      router.push((route.query.from as string) ?? '/');
+    }
   });
 };

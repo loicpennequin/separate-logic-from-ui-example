@@ -21,6 +21,7 @@ declare module '@vue/runtime-core' {
     UiButtonLink: typeof import('./src/components/ui/button/Link.vue')['default']
     UiCenter: typeof import('./src/components/ui/Center.vue')['default']
     UiContainer: typeof import('./src/components/ui/Container.vue')['default']
+    UiForm: typeof import('./src/components/ui/form/index.vue')['default']
     UiFormControl: typeof import('./src/components/ui/form/Control.vue')['default']
     UiFormError: typeof import('./src/components/ui/form/Error.vue')['default']
     UiFormFooter: typeof import('./src/components/ui/form/Footer.vue')['default']

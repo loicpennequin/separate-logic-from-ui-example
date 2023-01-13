@@ -24,6 +24,9 @@
   --color-primary-darker: hsl(var(--cyan), 18%);
   --color-on-primary-darker: var(--color-text-light);
 
+  --color-error: hsl(var(--red), 50%);
+  --color-on-error: var(--color-text-light);
+  
   --font-primary: Lato;
 
   --space-0: 0;
