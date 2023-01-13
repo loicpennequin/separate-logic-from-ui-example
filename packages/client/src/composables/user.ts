@@ -21,3 +21,25 @@ export const useSignup = (options: UseSignupOptions = {}) => {
     }
   });
 };
+
+export type UseLostPasswordOptions = TrpcMutationOptions<
+  UserService['sendPasswordResetEmail']
+>;
+export const useLostPassword = (options: UseLostPasswordOptions = {}) => {
+  return useMutation({
+    ...options,
+    mutationKey: queryKeys.LOST_PASSWORD(),
+    mutationFn: userService.sendPasswordResetEmail
+  });
+};
+
+export type UseResetPasswordOptions = TrpcMutationOptions<
+  UserService['resetPassword']
+>;
+export const useResetPassword = (options: UseResetPasswordOptions = {}) => {
+  return useMutation({
+    ...options,
+    mutationKey: queryKeys.RESET_PASSWORD(),
+    mutationFn: userService.resetPassword
+  });
+};

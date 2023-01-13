@@ -7,7 +7,7 @@ import { Response } from 'express';
 
 export const getTokens = async (userId: UUID) => {
   const tokens = generateTokens(userId);
-  await refreshTokenRepo.updateByUserId(userId, tokens.refreshToken);
+  await refreshTokenRepo.upsertByUserId(userId, tokens.refreshToken);
 
   return tokens;
 };

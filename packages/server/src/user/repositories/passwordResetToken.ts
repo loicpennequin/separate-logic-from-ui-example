@@ -2,12 +2,12 @@ import { noop } from '@daria/shared';
 import { db } from '../../db';
 import { UUID } from '../../utils';
 
-export const refreshTokenRepo = {
+export const passwordResetTokenRepo = {
   upsertByUserId: (id: UUID, value: string) =>
     db.user.update({
       where: { id },
       data: {
-        refreshToken: {
+        passwordResetToken: {
           upsert: {
             create: {
               value
@@ -22,5 +22,5 @@ export const refreshTokenRepo = {
 
   deleteByValue: (value: string) =>
     // https://github.com/prisma/prisma/issues/4072#issuecomment-1127067981
-    db.refreshToken.delete({ where: { value } }).catch(noop)
+    db.passwordResetToken.delete({ where: { value } }).catch(noop)
 };

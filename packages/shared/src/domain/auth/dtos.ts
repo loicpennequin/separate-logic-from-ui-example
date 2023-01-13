@@ -1,4 +1,5 @@
 import z from 'zod';
+import { DefaultResponse } from '../../types';
 
 export const LoginDto = z.object({
   email: z.string().email().trim(),
@@ -11,10 +12,8 @@ export const LoginResponse = z.object({
 });
 export type LoginResponse = z.infer<typeof LoginResponse>;
 
-export const LogoutResponse = z.object({
-  success: z.boolean()
-});
-export type LogoutResponse = z.infer<typeof LogoutResponse>;
+export const LogoutResponse = DefaultResponse;
+export type LogoutResponse = DefaultResponse;
 
 export const RefreshTokenResponse = z.object({
   accessToken: z.string()

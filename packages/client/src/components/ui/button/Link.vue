@@ -12,6 +12,7 @@
   text-decoration: underline;
   padding: 0;
   font-weight: 400;
+  display: inline-flex;
 }
 
 .button-link:hover {

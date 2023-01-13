@@ -37,8 +37,9 @@ declare module 'vue-router/auto/routes' {
   export interface RouteNamedMap {
     'Home': RouteRecordInfo<'Home', '/', Record<never, never>, Record<never, never>>,
     'Login': RouteRecordInfo<'Login', '/login', Record<never, never>, Record<never, never>>,
-    '/lost-password': RouteRecordInfo<'/lost-password', '/lost-password', Record<never, never>, Record<never, never>>,
+    'LostPassword': RouteRecordInfo<'LostPassword', '/lost-password', Record<never, never>, Record<never, never>>,
     '/protected': RouteRecordInfo<'/protected', '/protected', Record<never, never>, Record<never, never>>,
+    'ResetPassword': RouteRecordInfo<'ResetPassword', '/reset-password', Record<never, never>, Record<never, never>>,
     'SignUp': RouteRecordInfo<'SignUp', '/signup', Record<never, never>, Record<never, never>>,
   }
 }

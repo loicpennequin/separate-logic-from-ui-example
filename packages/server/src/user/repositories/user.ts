@@ -10,9 +10,22 @@ export const userRepo = {
   findByRefreshToken: (value: string) =>
     db.refreshToken.findUnique({ where: { value } }).user(),
 
+  findByPasswordResetToken: (value: string) =>
+    db.passwordResetToken.findUnique({ where: { value } }).user(),
+
   create: (data: Prisma.UserCreateInput) => {
     return db.user.create({
       data
+    });
+  },
+
+  updatePasswordById: (id: UUID, passwordHash: string) => {
+    return db.user.update({
+      where: { id },
+      data: {
+        passwordHash,
+        passwordResetToken: { delete: true }
+      }
     });
   }
 };

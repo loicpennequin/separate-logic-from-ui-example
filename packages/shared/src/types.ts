@@ -1,3 +1,5 @@
+import z from 'zod';
+
 export type Nullable<T> = T | null | undefined;
 export type NonNullable<T> = Exclude<T, undefined | null>;
 export type PartialBy<T, K extends keyof T = never> = Omit<T, K> &
@@ -21,3 +23,8 @@ export type AnyConstructor = Constructor<AnyObject>;
 export type Mixin<T extends AnyFunction> = InstanceType<ReturnType<T>>;
 export type AsyncReturnType<T extends (...args: any) => Promise<any>> =
   T extends (...args: any) => Promise<infer R> ? R : any;
+
+export const DefaultResponse = z.object({
+  success: z.boolean()
+});
+export type DefaultResponse = z.infer<typeof DefaultResponse>;

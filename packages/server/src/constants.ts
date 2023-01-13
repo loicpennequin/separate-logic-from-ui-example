@@ -8,7 +8,8 @@ export const ERROR_MESSAGES = {
   INVALID_JWT: 'The access token in invalid or corrupted',
   NO_REFRESH_TOKEN: 'No refresh token provided',
   INVALID_REFRESH_TOKEN: 'The refresh token in invalid or corrupted',
-  EMAIL_ALREADY_IN_USE: 'An account with this email already exists'
+  EMAIL_ALREADY_IN_USE: 'An account with this email already exists',
+  USER_NOT_FOUND_BY_EMAIL: 'No account was found using this email address'
 };
 
 export const ERROR_CODES = {
