@@ -1,10 +1,14 @@
-import { authService, type AuthService } from '@/api/auth';
+import type { AuthService } from '@daria/shared/dist/client';
 import { queryKeys } from '@/utils/queryKeys';
-import type { TrpcMutationOptions, TrpcQueryOptions } from '@/utils/types';
+import type {
+  ApiClientMutationOptions,
+  ApiClientQueryOptions
+} from '@/utils/types';
 
-export type UseLoginOptions = TrpcMutationOptions<AuthService['login']>;
+export type UseLoginOptions = ApiClientMutationOptions<AuthService['login']>;
 export const useLogin = (options: UseLoginOptions = {}) => {
   const qc = useQueryClient();
+  const { authService } = useApi();
 
   return useMutation({
     ...options,
@@ -18,9 +22,10 @@ export const useLogin = (options: UseLoginOptions = {}) => {
   });
 };
 
-export type UseLogoutOptions = TrpcMutationOptions<AuthService['logout']>;
+export type UseLogoutOptions = ApiClientMutationOptions<AuthService['logout']>;
 export const useLogout = (options: UseLogoutOptions = {}) => {
   const qc = useQueryClient();
+  const { authService } = useApi();
 
   return useMutation({
     ...options,
@@ -34,8 +39,12 @@ export const useLogout = (options: UseLogoutOptions = {}) => {
   });
 };
 
-export type UseSessionOptions = TrpcQueryOptions<AuthService['getSession']>;
+export type UseSessionOptions = ApiClientQueryOptions<
+  AuthService['getSession']
+>;
 export const useSession = (options: UseSessionOptions = {}) => {
+  const { authService } = useApi();
+
   return useQuery({
     ...options,
     queryKey: queryKeys.SESSION(),
@@ -44,6 +53,7 @@ export const useSession = (options: UseSessionOptions = {}) => {
 };
 
 export const useAuthGuard = () => {
+  const { authService } = useApi();
   const router = useRouter();
   const route = useRoute();
 
@@ -51,6 +61,7 @@ export const useAuthGuard = () => {
 
   router.beforeEach((to, from, next) => {
     const jwt = authService.token;
+
     if (to.meta.needsAuth && !jwt) {
       return next({ name: 'Login', query: { from: to.fullPath } });
     }

@@ -1,12 +1,12 @@
-import { authService } from '@/api/auth';
-import { userService, type UserService } from '@/api/user';
+import type { UserService } from '@daria/shared/dist/client';
 import { queryKeys } from '@/utils/queryKeys';
-import type { TrpcMutationOptions } from '@/utils/types';
+import type { ApiClientMutationOptions } from '@/utils/types';
 
-export type UseSignupOptions = TrpcMutationOptions<UserService['signup']>;
+export type UseSignupOptions = ApiClientMutationOptions<UserService['signup']>;
 export const useSignup = (options: UseSignupOptions = {}) => {
   const qc = useQueryClient();
   const { push } = useRouter();
+  const { authService, userService } = useApi();
 
   return useMutation({
     ...options,
@@ -22,10 +22,12 @@ export const useSignup = (options: UseSignupOptions = {}) => {
   });
 };
 
-export type UseLostPasswordOptions = TrpcMutationOptions<
+export type UseLostPasswordOptions = ApiClientMutationOptions<
   UserService['sendPasswordResetEmail']
 >;
 export const useLostPassword = (options: UseLostPasswordOptions = {}) => {
+  const { userService } = useApi();
+
   return useMutation({
     ...options,
     mutationKey: queryKeys.LOST_PASSWORD(),
@@ -33,10 +35,12 @@ export const useLostPassword = (options: UseLostPasswordOptions = {}) => {
   });
 };
 
-export type UseResetPasswordOptions = TrpcMutationOptions<
+export type UseResetPasswordOptions = ApiClientMutationOptions<
   UserService['resetPassword']
 >;
 export const useResetPassword = (options: UseResetPasswordOptions = {}) => {
+  const { userService } = useApi();
+
   return useMutation({
     ...options,
     mutationKey: queryKeys.RESET_PASSWORD(),

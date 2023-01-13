@@ -4,8 +4,9 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import { createRouter, createWebHistory } from 'vue-router/auto';
 import { QueryClient, VueQueryPlugin } from '@tanstack/vue-query';
-import { authService } from './api/auth';
 import { queryKeys } from './utils/queryKeys';
+import { createApiClient } from '@daria/shared/dist/client';
+import { API_INJECTION_KEY } from './composables/useApi';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -18,12 +19,17 @@ const queryClient = new QueryClient({
 });
 
 async function main() {
+  const apiClient = createApiClient(import.meta.env.VITE_API_URL);
+
   try {
-    await authService.init();
-    queryClient.prefetchQuery(queryKeys.SESSION(), authService.getSession);
+    await apiClient.authService.init();
+    queryClient.prefetchQuery(
+      queryKeys.SESSION(),
+      apiClient.authService.getSession
+    );
   } finally {
     const app = createApp(App);
-
+    app.provide(API_INJECTION_KEY, apiClient);
     app.use(
       createRouter({
         history: createWebHistory()

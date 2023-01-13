@@ -9,12 +9,12 @@ import type { VueMutationObserverOptions } from '@tanstack/vue-query/build/lib/u
 export type RouterOutput = inferRouterOutputs<TrpcRouter>;
 export type ErrorOutput = TRPCClientError<TrpcRouter>;
 
-export type TrpcQueryOptions<T extends AnyFunction> = Omit<
+export type ApiClientQueryOptions<T extends AnyFunction> = Omit<
   UseQueryOptions<AsyncReturnType<T>, ErrorOutput, any, string[]>,
   'queryKey' | 'queryFn' | 'useErrorBoundary'
 >;
 
-export type TrpcMutationOptions<T extends AnyFunction> = Omit<
+export type ApiClientMutationOptions<T extends AnyFunction> = Omit<
   VueMutationObserverOptions<
     AsyncReturnType<T>,
     ErrorOutput,
