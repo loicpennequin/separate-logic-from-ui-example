@@ -1,0 +1,30 @@
+.textInput {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-surface);
+  border: solid 1px hsl(var(--black), 85%);
+}
+
+.textInput.left {
+  padding-inline-start: var(--space-3);
+}
+
+.textInput.right {
+  padding-inline-end: var(--space-3);
+}
+.textInput:focus-within {
+  border-color: var(--color-primary);
+}
+
+.textInput:has(input:disabled) {
+  background-color: hsl(var(--black), 85%);
+}
+
+.textInput > input {
+  flex-grow: 1;
+  background-color: inherit;
+  color: inherit;
+  padding-inline: var(--space-3);
+  padding-block: var(--space-2);
+  min-width: 0;
+}

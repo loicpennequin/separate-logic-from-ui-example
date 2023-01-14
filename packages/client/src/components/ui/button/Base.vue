@@ -33,11 +33,8 @@ const fontSize = computed(() => {
     :disabled="isLoading || $attrs.disabled"
   >
     <slot name="left" />
-
-    <!-- <UiSpinner v-if="isLoading" /> -->
     <span v-if="props.isLoading">Loading...</span>
     <slot v-else />
-
     <slot name="right" />
   </component>
 </template>

@@ -1,0 +1,23 @@
+.buttonBase {
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  font-size: v-bind(fontSize);
+  padding: var(--space-3-em) var(--space-4-em);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border-radius: var(--radius-2);
+  border: solid 1px transparent;
+}
+
+.buttonBase:focus {
+  outline: solid 1px var(--color-primary);
+}
+
+.buttonBase:disabled {
+  opacity: 0.6;
+}

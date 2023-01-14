@@ -1,0 +1,6 @@
+.surface {
+  background-color: var(--color-surface);
+  padding: var(--space-8);
+  border-radius: var(--radius-3);
+  color: var(--color---color-on-surface);
+}

@@ -1,0 +1,6 @@
+.pageTitle {
+  text-align: center;
+  font-size: var(--text-size-6);
+  font-weight: 700;
+  margin-block-end: var(--space-8);
+}

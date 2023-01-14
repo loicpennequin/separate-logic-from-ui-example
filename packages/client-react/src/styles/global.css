@@ -24,3 +24,7 @@ body {
 button {
   cursor: pointer;
 }
+
+.page {
+	margin-block-start: var(--space-15);
+}

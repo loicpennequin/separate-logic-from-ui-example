@@ -6,11 +6,7 @@ import { LoginDto } from '@daria/shared';
 const { mutate: login, isLoading, error, reset } = useLogin();
 
 const { handleSubmit } = useForm<LoginDto>({
-  validationSchema: toFormValidator(LoginDto),
-  initialValues: {
-    email: '',
-    password: ''
-  }
+  validationSchema: toFormValidator(LoginDto)
 });
 
 const onSubmit = handleSubmit(values => {

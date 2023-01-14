@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{ name: string; id: string; label: string }>();
+
 const { value, errorMessage, meta } = useField(toRef(props, 'name'));
 
 const bind = computed(() => ({

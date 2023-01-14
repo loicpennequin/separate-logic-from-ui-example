@@ -53,7 +53,7 @@ const slots = useSlots();
   border-color: var(--color-primary);
 }
 
-.text-input:has(.input:disabled) {
+.text-input:has(input:disabled) {
   background-color: hsl(var(--black), 85%);
 }
 

@@ -1,0 +1,5 @@
+.formError {
+  color: var(--color-error);
+  display: flex;
+  gap: var(--space-2);
+}

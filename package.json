@@ -6,7 +6,8 @@
     "client": "yarn workspace @daria/client",
     "client-react": "yarn workspace @daria/client-react",
     "shared": "yarn workspace @daria/shared",
-    "dev": "node scripts/dev.js"
+    "dev:vue": "concurrently -n shared,client,server \"yarn shared dev\" \"yarn client dev\" \"yarn server dev\"",
+    "dev:react": "concurrently -n shared,server, warn \"yarn shared dev\" \"yarn server dev\" \"node scripts/dev-react.js\""
   },
   "workspaces": {
     "packages": [
