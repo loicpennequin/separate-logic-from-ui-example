@@ -8,6 +8,7 @@ type Props = HTMLAttributes<HTMLButtonElement> & {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   to?: string;
   disabled?: boolean;
+  type?: 'submit' | 'button' | 'reset';
   leftElement?: ReactNode;
   rightElement?: ReactNode;
 };

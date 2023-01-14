@@ -8,6 +8,7 @@ type Props = HTMLAttributes<HTMLInputElement> & {
   id: string;
   leftElement?: ReactNode;
   rightElement?: ReactNode;
+  type?: string;
 };
 
 export const TextInput = ({
@@ -15,18 +16,19 @@ export const TextInput = ({
   rightElement,
   value,
   onChange,
+  type = 'text',
   ...props
 }: Props) => {
   return (
     <div
       className={clsx(styles.textInput, {
-        left: !!leftElement,
-        right: !!rightElement
+        [styles.left]: !!leftElement,
+        [styles.right]: !!rightElement
       })}
     >
       {leftElement}
 
-      <input {...props} value={value ?? ''} onChange={onChange} />
+      <input {...props} type={type} value={value ?? ''} onChange={onChange} />
 
       {rightElement}
     </div>

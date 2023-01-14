@@ -16,6 +16,7 @@ type Props = HTMLAttributes<HTMLButtonElement> & {
   disabled?: boolean;
   leftElement?: ReactNode;
   rightElement?: ReactNode;
+  type?: 'submit' | 'button' | 'reset';
 };
 
 export const ButtonBase: FC<PropsWithChildren<Props>> = ({
