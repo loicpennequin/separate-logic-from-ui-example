@@ -1,0 +1,14 @@
+.buttonLink {
+  color: var(--color-primary);
+  text-decoration: underline;
+  padding: 0;
+  font-weight: 400;
+  display: inline-flex;
+}
+
+.buttonLink:hover {
+  color: var(--color-primary-dark);
+}
+.buttonLink:focus-visible {
+  color: var(--color-primary-darker);
+}

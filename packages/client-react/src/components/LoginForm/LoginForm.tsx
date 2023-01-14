@@ -1,14 +1,16 @@
 import { LoginDto } from '@daria/shared';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '../ui/form/Form';
 import { FormControl } from '../ui/form/Control/Control';
 import { TextInput } from '../ui/TextInput/TextInput';
 import { Formik } from 'formik';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
-import { ButtonBase } from '../ui/Button/Base/Base';
+import { ButtonCta } from '../ui/Button/Cta/Cta';
+import { FormFooter } from '../ui/form/Footer/Footer';
+import { ButtonLink } from '../ui/Button/Link/Link';
+import { FormError } from '../ui/form/Error/Error';
 
 export const LoginForm = () => {
-  const { mutate: login, isLoading, error, reset } = useLogin();
+  const { mutate: login, error, reset } = useLogin();
 
   const initialValues = {
     email: '',
@@ -34,7 +36,12 @@ export const LoginForm = () => {
             {fieldProps => <TextInput {...fieldProps} />}
           </FormControl>
 
-          <ButtonBase>Login</ButtonBase>
+          <FormFooter>
+            <ButtonCta>Login</ButtonCta>
+            <ButtonLink to="/lost-password">Forgot your password</ButtonLink>
+          </FormFooter>
+
+          {error && <FormError error={error.message} />}
         </Form>
       )}
     </Formik>
