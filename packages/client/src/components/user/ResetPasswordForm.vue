@@ -44,7 +44,7 @@ const onSubmit = handleSubmit(values => {
       id="signup-password"
       v-slot="{ bind, on }"
       name="password"
-      label="Password"
+      label="Your new password"
     >
       <UiPasswordInput v-bind="bind" v-on="on" />
     </UiFormControl>
@@ -53,7 +53,7 @@ const onSubmit = handleSubmit(values => {
       id="signup-password-confirm"
       v-slot="{ bind, on }"
       name="passwordConfirm"
-      label="Confirm your password"
+      label="Confirm your new password"
     >
       <UiPasswordInput v-bind="bind" v-on="on" />
     </UiFormControl>
