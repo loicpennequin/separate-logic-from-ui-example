@@ -1,15 +1,11 @@
 import type { Nullable } from '@daria/shared';
 import styles from './TextInput.module.css';
 import { clsx } from 'clsx';
-import type { ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 
-type Props = {
+type Props = HTMLAttributes<HTMLInputElement> & {
   value: Nullable<string>;
-  onChange: (val: string) => void;
-  name: string;
-  type?: string;
   id: string;
-  disabled?: boolean;
   leftElement?: ReactNode;
   rightElement?: ReactNode;
 };
@@ -30,11 +26,7 @@ export const TextInput = ({
     >
       {leftElement}
 
-      <input
-        {...props}
-        value={value ?? ''}
-        onChange={e => onChange(e.target.value)}
-      />
+      <input {...props} value={value ?? ''} onChange={onChange} />
 
       {rightElement}
     </div>

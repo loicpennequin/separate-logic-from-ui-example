@@ -45,9 +45,11 @@ export type UseSessionOptions = ApiClientQueryOptions<
 export const useSession = (options: UseSessionOptions = {}) => {
   const { authService } = useApiClient();
 
-  return useQuery({
+  const query = useQuery({
     ...options,
     queryKey: queryKeys.SESSION(),
     queryFn: authService.getSession
   });
+
+  return query;
 };

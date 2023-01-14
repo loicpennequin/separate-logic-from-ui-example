@@ -29,8 +29,7 @@ export const ButtonBase: FC<PropsWithChildren<Props>> = ({
   className,
   ...props
 }) => {
-  const Component = (to ? Link : 'button') as any; //really...
-
+  const Component = to ? Link : 'button';
   const sizeLookup = {
     sm: 2,
     md: 3,
@@ -44,7 +43,7 @@ export const ButtonBase: FC<PropsWithChildren<Props>> = ({
 
   return (
     <Component
-      {...props}
+      {...(props as any)}
       className={clsx(styles.buttonBase, className)}
       style={style}
       disabled={isLoading || disabled}

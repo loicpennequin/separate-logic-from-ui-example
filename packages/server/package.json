@@ -4,6 +4,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "concurrently --kill-others \"dotenv -c -- nodemon src/index.ts\" \"tsc -watch\" ",
+    "predev": "yarn db:sync",
     "build": "tsc",
     "build:watch": "tsc -watch",
     "start": "cross-env NODE_ENV=production node dist/index.js",

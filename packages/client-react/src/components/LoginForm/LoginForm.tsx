@@ -1,33 +1,42 @@
-import { useForm, Controller } from 'react-hook-form';
 import { LoginDto } from '@daria/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '../ui/form/Form';
 import { FormControl } from '../ui/form/Control/Control';
 import { TextInput } from '../ui/TextInput/TextInput';
+import { Formik } from 'formik';
+import { toFormikValidationSchema } from 'zod-formik-adapter';
+import { ButtonBase } from '../ui/Button/Base/Base';
 
 export const LoginForm = () => {
   const { mutate: login, isLoading, error, reset } = useLogin();
 
-  const { control, handleSubmit } = useForm<LoginDto>({
-    resolver: zodResolver(LoginDto)
-  });
-
-  const onSubmit = handleSubmit(values => {
-    reset();
-    login(values);
-  });
+  const initialValues = {
+    email: '',
+    password: ''
+  };
 
   return (
-    <Form onSubmit={onSubmit}>
-      <FormControl id="signup-mail" name="email" label="E-mail">
-        <Controller
-          name="email"
-          control={control}
-          render={({ field }) => (
-            <TextInput {...field} type="email" id="signup-mail" />
-          )}
-        />
-      </FormControl>
-    </Form>
+    <Formik
+      validationSchema={toFormikValidationSchema(LoginDto)}
+      onSubmit={values => {
+        reset();
+        login(values);
+      }}
+      initialValues={initialValues}
+    >
+      {props => (
+        <Form onSubmit={props.handleSubmit}>
+          <FormControl id="signup-mail" name="email" label="E-mail">
+            {fieldProps => <TextInput {...fieldProps} />}
+          </FormControl>
+
+          <FormControl id="signup-password" name="password" label="Password">
+            {fieldProps => <TextInput {...fieldProps} />}
+          </FormControl>
+
+          <ButtonBase>Login</ButtonBase>
+        </Form>
+      )}
+    </Formik>
   );
 };

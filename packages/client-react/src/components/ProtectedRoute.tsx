@@ -1,13 +1,12 @@
-import type { ReactNode } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
-type Props = { children: ReactNode };
-export const ProtectedRoute = ({ children }: Props) => {
+export const ProtectedRoute: FC<PropsWithChildren> = ({ children }) => {
   const { data } = useSession();
   const location = useLocation();
 
   return data ? (
-    children
+    <>{children}</>
   ) : (
     <Navigate to={`/login?from=${location.pathname}`} replace />
   );

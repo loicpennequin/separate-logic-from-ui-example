@@ -1,4 +1,4 @@
-import { PageTitle } from '@/components/Pagetitle/Pagetitle';
+import { PageTitle } from '@/components/PageTitle/PageTitle';
 import { Container } from '@/components/ui/Container/Container';
 import { Surface } from '@/components/ui/Surface/Surface';
 

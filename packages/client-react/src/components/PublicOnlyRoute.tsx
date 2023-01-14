@@ -1,8 +1,7 @@
-import type { ReactNode } from 'react';
+import type { FC, PropsWithChildren, ReactNode } from 'react';
 import { Navigate, useSearchParams } from 'react-router-dom';
 
-type Props = { children: ReactNode };
-export const PublicOnlyRoute = ({ children }: Props) => {
+export const PublicOnlyRoute: FC<PropsWithChildren> = ({ children }) => {
   const { data } = useSession();
 
   const [searchParams] = useSearchParams();
@@ -10,6 +9,6 @@ export const PublicOnlyRoute = ({ children }: Props) => {
   return data ? (
     <Navigate to={searchParams.get('from') ?? '/'} replace />
   ) : (
-    children
+    <>{children}</>
   );
 };

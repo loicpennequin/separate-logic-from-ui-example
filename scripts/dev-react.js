@@ -8,9 +8,7 @@ setTimeout(() => {
   );
   console.log('I have no idea why.');
   console.log(
-    `please run ${chalk.green(
-      'yarn client-react dev'
-    )} dev in a separate terminal`
+    `please run ${chalk.green('yarn client-react dev')} in a separate terminal`
   );
   console.log('===========================================================');
   console.log('===========================================================');

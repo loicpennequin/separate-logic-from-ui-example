@@ -11,7 +11,12 @@ export type RouterOutput = inferRouterOutputs<TrpcRouter>;
 export type ErrorOutput = TRPCClientError<TrpcRouter>;
 
 export type ApiClientQueryOptions<T extends AnyFunction> = Omit<
-  UseQueryOptions<AsyncReturnType<T>, ErrorOutput, any, string[]>,
+  UseQueryOptions<
+    AsyncReturnType<T>,
+    ErrorOutput,
+    AsyncReturnType<T>,
+    string[]
+  >,
   'queryKey' | 'queryFn' | 'useErrorBoundary'
 >;
 
