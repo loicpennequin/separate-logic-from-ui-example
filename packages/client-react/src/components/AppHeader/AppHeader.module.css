@@ -1,0 +1,16 @@
+.appHeader {
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  padding: var(--space-5);
+}
+
+.inner {
+  justify-content: space-between;
+}
+
+.inner,
+.appHeader nav > ul {
+  display: flex;
+  gap: var(--space-5);
+  align-items: center;
+}

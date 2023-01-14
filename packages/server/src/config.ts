@@ -32,9 +32,12 @@ const configSchema = z.object({
 export const config = configSchema.parse({
   PORT: process.env.PORT ?? 5000,
   NODE_ENV: process.env.NODE_ENV ?? 'development',
-  WEBSITE_URL: process.env.WEBSITE_URL,
+  WEBSITE_URL: process.env.WEBSITE_URL_VUE,
   CORS: {
-    ALLOWED_ORIGINS: [process.env.WEBSITE_URL]
+    ALLOWED_ORIGINS: [
+      process.env.WEBSITE_URL_VUE,
+      process.env.WEBSITE_URL_REACT
+    ]
   },
   SESSION: {
     SECRET: process.env.SESSION_SECRET

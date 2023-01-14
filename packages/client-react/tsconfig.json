@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "noImplicitThis": true,
+    "preserveValueImports": true,
+    "importsNotUsedAsValues": "error",
+    "esModuleInterop": true,
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "types": ["unplugin-icons/types/react"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "auto-imports.d.ts",
+    "components.d.ts",
+    "typed-router.d.ts",
+    "src/**/*",
+    "src/**/*.json"
+  ],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

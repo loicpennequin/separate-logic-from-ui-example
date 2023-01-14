@@ -4,6 +4,7 @@
   "scripts": {
     "server": "yarn workspace @daria/server",
     "client": "yarn workspace @daria/client",
+    "client-react": "yarn workspace @daria/client-react",
     "shared": "yarn workspace @daria/shared",
     "dev": "node scripts/dev.js"
   },
