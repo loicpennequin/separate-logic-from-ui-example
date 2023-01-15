@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon",
     "predev": "yarn db:sync",
-    "build": "esbuild src/index.ts --platform=node  --outdir=dist",
+    "build": "esbuild src/index.ts --platform=node --bundle --external:@prisma/* --outfile=dist/index.js",
     "build:watch": "tsc -watch",
     "start": "dotenv -c -- node dist/index.js",
     "prisma": "dotenv -c -- prisma",

@@ -1,4 +1,5 @@
-import type { LoginDto, Nullable } from '@daria/shared';
+import type { LoginDto } from '../domain/auth';
+import type { Nullable } from '../types';
 import { httpService } from './httpService';
 import type { TrpcClient } from './trpcClient';
 import jwtDecode from 'jwt-decode';
