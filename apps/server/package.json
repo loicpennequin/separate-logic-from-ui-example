@@ -7,7 +7,7 @@
     "predev": "yarn db:sync",
     "build": "esbuild src/index.ts --platform=node --bundle --external:@prisma/* --outfile=dist/index.js",
     "build:watch": "tsc -watch",
-    "start": "dotenv -c -- node dist/index.js",
+    "start": "cross-env NODE_END=production dotenv -c -- node dist/index.js",
     "prisma": "dotenv -c -- prisma",
     "db:sync": "yarn prisma generate && yarn prisma db push",
     "db:migrate": "dotenv -c -- prisma migrate dev",
