@@ -1,4 +1,4 @@
-import { createApiClient } from '@daria/sdk';
+import { createApiClient } from '@daria/shared';
 import { createContext } from 'react';
 
 export const apiClient = createApiClient(import.meta.env.VITE_API_URL);

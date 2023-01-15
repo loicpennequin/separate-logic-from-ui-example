@@ -1,6 +1,6 @@
 {
   "restartable": "rs",
-  "watch": ["src", "../../libs/shared/src", "../../libs/sdk/src"],
+  "watch": ["src", "../../libs/shared/src"],
   "execMap": {
     "ts": "ts-node"
   }

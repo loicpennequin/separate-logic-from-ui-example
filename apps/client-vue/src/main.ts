@@ -5,7 +5,7 @@ import App from './App.vue';
 import { createRouter, createWebHistory } from 'vue-router/auto';
 import { QueryClient, VueQueryPlugin } from '@tanstack/vue-query';
 import { queryKeys } from './utils/queryKeys';
-import { createApiClient } from '@daria/sdk';
+import { createApiClient } from '@daria/shared';
 import { API_INJECTION_KEY } from './composables/useApi';
 
 const queryClient = new QueryClient({

@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@daria/shared": "*",
-    "@daria/sdk": "*",
     "@tanstack/react-query": "^4.22.0",
     "clsx": "^1.2.1",
     "formik": "^2.2.9",

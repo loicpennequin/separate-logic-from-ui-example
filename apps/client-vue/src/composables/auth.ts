@@ -1,4 +1,4 @@
-import type { AuthService } from '@daria/sdk';
+import type { AuthService } from '@daria/shared';
 import { queryKeys } from '@/utils/queryKeys';
 import type {
   ApiClientMutationOptions,

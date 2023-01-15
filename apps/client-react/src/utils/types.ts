@@ -3,7 +3,7 @@ import type {
   UseMutationOptions
 } from '@tanstack/react-query';
 import type { AnyFunction, AsyncReturnType } from '@daria/shared';
-import type { SdkError } from '@daria/sdk';
+import type { SdkError } from '@daria/shared';
 
 export type ApiClientQueryOptions<T extends AnyFunction> = Omit<
   UseQueryOptions<AsyncReturnType<T>, SdkError, AsyncReturnType<T>, string[]>,

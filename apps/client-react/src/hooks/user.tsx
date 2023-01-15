@@ -1,4 +1,4 @@
-import type { UserService } from '@daria/sdk';
+import type { UserService } from '@daria/shared';
 import { queryKeys } from '@/utils/queryKeys';
 import type { ApiClientMutationOptions } from '@/utils/types';
 import { useNavigate } from 'react-router-dom';

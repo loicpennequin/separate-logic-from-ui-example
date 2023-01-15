@@ -1,5 +1,5 @@
 import type { InjectionKey } from 'vue';
-import type { ApiClient } from '@daria/sdk';
+import type { ApiClient } from '@daria/shared';
 
 export const API_INJECTION_KEY = Symbol('api') as InjectionKey<ApiClient>;
 
