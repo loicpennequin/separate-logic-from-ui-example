@@ -1,5 +1,5 @@
 <template>
-  <p>This is a protected page</p>
+  <p>This is a protected page. You can only access it if you're logged in</p>
 </template>
 
 <route lang="json">

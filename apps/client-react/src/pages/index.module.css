@@ -1,0 +1,23 @@
+.inner {
+  line-height: 1.5;
+}
+
+.inner > * + * {
+  margin-top: var(--space-4);
+}
+
+.inner > h3 {
+  font-weight: 700;
+  font-size: var(--text-size-4);
+}
+
+.inner > ul {
+  list-style-type: disc;
+  padding-left: var(--space-6);
+}
+
+.inner a {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: underline;
+}

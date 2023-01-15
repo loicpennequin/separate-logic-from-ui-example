@@ -7,8 +7,7 @@ import type { TRPCClientError } from '@trpc/client';
 export type { AuthService } from './authService';
 export type { UserService } from './userService';
 
-export type SdkError = TRPCClientError<any>;
-export type SdkRouter = TrpcRouter;
+export type ApiClientError = TRPCClientError<TrpcRouter>;
 
 export type ApiClient = ReturnType<typeof createApiClient>;
 export const createApiClient = (baseUrl: string) => {

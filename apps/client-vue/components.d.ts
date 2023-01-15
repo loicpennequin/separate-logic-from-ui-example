@@ -7,6 +7,8 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AppAppFooter: typeof import('./src/components/app/AppFooter.vue')['default']
+    AppFooter: typeof import('./src/components/app/Footer.vue')['default']
     AppHeader: typeof import('./src/components/app/Header.vue')['default']
     AppPageTitle: typeof import('./src/components/app/PageTitle.vue')['default']
     AuthLoginForm: typeof import('./src/components/auth/LoginForm.vue')['default']
