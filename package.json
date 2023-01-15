@@ -6,14 +6,18 @@
     "client-vue": "yarn workspace @daria/client-vue",
     "client-react": "yarn workspace @daria/client-react",
     "shared": "yarn workspace @daria/shared",
-    "dev": "node scripts/dev.js"
+    "dev": "turbo run dev"
   },
   "workspaces": {
     "packages": [
-      "packages/*"
+      "libs/*",
+      "apps/*"
     ]
   },
   "devDependencies": {
     "concurrently": "^7.5.0"
+  },
+  "dependencies": {
+    "turbo": "^1.7.0"
   }
 }

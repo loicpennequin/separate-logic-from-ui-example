@@ -15,7 +15,6 @@
     "db:seed": "dotenv -c -- prisma db seed"
   },
   "dependencies": {
-    "@daria/server": "*",
     "@daria/shared": "*",
     "@prisma/client": "^4.6.1",
     "@trpc/server": "^10.8.1",
