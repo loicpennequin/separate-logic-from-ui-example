@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import IconLogo from '~icons/vscode-icons/file-type-vue';
 const { data: session } = useSession();
 const { mutate: logout } = useLogout();
 </script>
@@ -6,7 +7,8 @@ const { mutate: logout } = useLogout();
 <template>
   <header>
     <UiContainer class="inner">
-      <router-link to="/">
+      <router-link to="/" class="home-link">
+        <IconLogo />
         <h1>My App</h1>
       </router-link>
 
@@ -42,6 +44,11 @@ header {
   padding: var(--space-5);
 }
 
+.home-link {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
 .inner {
   justify-content: space-between;
 }

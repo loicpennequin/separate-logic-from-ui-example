@@ -39,7 +39,7 @@ export const LoginForm = () => {
 
           <FormFooter>
             <ButtonCta type="submit">Login</ButtonCta>
-            <ButtonLink to="/lost-password">Forgot your password</ButtonLink>
+            <ButtonLink to="/lost-password">Forgot your password ?</ButtonLink>
           </FormFooter>
 
           {error && <FormError error={error.message} />}

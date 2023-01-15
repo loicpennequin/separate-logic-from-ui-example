@@ -37,7 +37,7 @@ const onSubmit = handleSubmit(values => {
 
     <UiFormFooter>
       <UiButtonCta :is-loading="isLoading">Login</UiButtonCta>
-      <UiButtonLink to="/lost-password">Forgot your password</UiButtonLink>
+      <UiButtonLink to="/lost-password">Forgot your password ?</UiButtonLink>
     </UiFormFooter>
 
     <UiFormError :error="error.message" v-if="error" />

@@ -1,4 +1,8 @@
-import { FIFTEEN_MINUTES_IN_SECONDS } from '@daria/shared';
+import {
+  FIFTEEN_MINUTES_IN_SECONDS,
+  ONE_MINUTE_IN_SECONDS,
+  ONE_WEEK_IN_SECONDS
+} from '@daria/shared';
 import z from 'zod';
 
 const configSchema = z.object({
@@ -44,11 +48,11 @@ export const config = configSchema.parse({
   },
   JWT: {
     SECRET: process.env.SESSION_SECRET,
-    EXPIRES_IN_SECONDS: FIFTEEN_MINUTES_IN_SECONDS
+    EXPIRES_IN_SECONDS: ONE_MINUTE_IN_SECONDS
   },
   REFRESH_TOKEN: {
     SECRET: process.env.SESSION_SECRET,
-    EXPIRES_IN_SECONDS: FIFTEEN_MINUTES_IN_SECONDS,
+    EXPIRES_IN_SECONDS: ONE_WEEK_IN_SECONDS,
     PATH: '/',
     HTTPONLY: true,
     SECURE: process.env.NODE_ENV === 'production',

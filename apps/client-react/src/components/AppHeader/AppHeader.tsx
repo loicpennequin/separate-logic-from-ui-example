@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './AppHeader.module.css';
 import { clsx } from 'clsx';
 import { Container } from '../ui/Container/Container';
+import IconLogo from '~icons/vscode-icons/file-type-reactjs';
 
 type Props = HTMLAttributes<HTMLElement>;
 
@@ -13,7 +14,8 @@ export const AppHeader = ({ className, ...props }: Props) => {
   return (
     <header {...props} className={clsx(styles.appHeader, className)}>
       <Container className={styles.inner}>
-        <Link to="/">
+        <Link to="/" className={styles.homeLink}>
+          <IconLogo />
           <h1>My App</h1>
         </Link>
 
