@@ -1,8 +1,7 @@
-import type { Nullable } from '../../types';
-import { httpService } from '../core/httpService';
-import type { TrpcClient } from '../core/trpcClient';
+import type { LoginDto, Nullable } from '@daria/shared';
+import { httpService } from './httpService';
+import type { TrpcClient } from './trpcClient';
 import jwtDecode from 'jwt-decode';
-import type { LoginDto } from './dtos';
 
 type JwtPayload = {
   sub: string;
@@ -55,6 +54,7 @@ export const createAuthService = (trpcClient: TrpcClient) => {
       const isExpired = checkJwtExpiration(token);
       if (!isExpired) return;
       token = null;
+
       const { accessToken } = await trpcClient.auth.refreshJwt.mutate();
       token = accessToken;
     };

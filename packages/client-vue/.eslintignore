@@ -1,0 +1,6 @@
+node_modules
+dist
+out
+.gitignore
+typed-router.d.ts
+auto-imports.d.ts

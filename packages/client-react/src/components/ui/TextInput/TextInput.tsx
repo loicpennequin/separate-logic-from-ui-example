@@ -22,8 +22,8 @@ export const TextInput = ({
   return (
     <div
       className={clsx(styles.textInput, {
-        [styles.left]: !!leftElement,
-        [styles.right]: !!rightElement
+        [styles.left ?? '']: !!leftElement,
+        [styles.right ?? '']: !!rightElement
       })}
     >
       {leftElement}

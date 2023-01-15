@@ -1,4 +1,4 @@
-import type { UserService } from '@daria/shared/dist/client';
+import type { UserService } from '@daria/sdk';
 import { queryKeys } from '@/utils/queryKeys';
 import type { ApiClientMutationOptions } from '@/utils/types';
 

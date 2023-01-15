@@ -1,9 +1,9 @@
 {
   "name": "@daria/server",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "src/index.ts",
   "scripts": {
-    "dev": "concurrently --kill-others \"dotenv -c -- nodemon src/index.ts\" \"tsc -watch\" ",
+    "dev": "nodemon",
     "predev": "yarn db:sync",
     "build": "tsc",
     "build:watch": "tsc -watch",

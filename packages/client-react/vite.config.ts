@@ -12,7 +12,7 @@ export default defineConfig({
     Pages(),
     Icons({ compiler: 'jsx', jsx: 'react' }),
     checker({
-      typescript: { tsconfigPath: './tsconfig.json' }
+      typescript: { tsconfigPath: './tsconfig.app.json' }
     }),
     AutoImport({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
@@ -30,11 +30,13 @@ export default defineConfig({
       dirs: ['./src/hooks', './src/hooks/**']
     })
   ],
+
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+
   server: {
     port: 5174
   }

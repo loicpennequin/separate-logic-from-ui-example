@@ -1,9 +1,9 @@
-import type { TrpcClient } from '../core/trpcClient';
+import type { TrpcClient } from './trpcClient';
 import type {
   ResetPasswordDto,
   SendPasswordResetEmailDto,
   SignUpDto
-} from './dtos';
+} from '@daria/shared';
 
 export type UserService = ReturnType<typeof createUserService>;
 

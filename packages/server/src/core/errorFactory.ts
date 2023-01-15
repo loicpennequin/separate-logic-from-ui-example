@@ -1,4 +1,4 @@
-import { ERROR_CODES, ErrorCode } from '../constants';
+import { ERROR_CODES, type ErrorCode } from '../constants';
 
 class AppError extends Error {
   isAppError = true;

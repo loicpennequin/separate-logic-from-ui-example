@@ -1,0 +1,24 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "include": [
+    "env.d.ts",
+    "auto-imports.d.ts",
+    "components.d.ts",
+    "typed-router.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    "src/**/*.json"
+  ],
+  "exclude": ["src/**/__tests__/*"],
+  "compilerOptions": {
+    "composite": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "types": ["unplugin-icons/types/react"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
