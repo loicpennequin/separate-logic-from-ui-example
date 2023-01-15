@@ -6,21 +6,13 @@ import { defineConfig } from 'vite';
 import checker from 'vite-plugin-checker';
 import Pages from 'vite-plugin-pages';
 
-const devAliases = {
-  '@': fileURLToPath(new URL('./src', import.meta.url)),
-  '@daria/shared': fileURLToPath(
-    new URL('../../libs/shared/src', import.meta.url)
-  ),
-  '@daria/sdk': fileURLToPath(new URL('../../libs/sdk/src', import.meta.url))
-};
-
-export default defineConfig(({ mode }) => ({
+export default defineConfig(() => ({
   plugins: [
     react(),
     Pages(),
     Icons({ compiler: 'jsx', jsx: 'react' }),
     checker({
-      typescript: { tsconfigPath: './tsconfig.dev.json' }
+      typescript: { tsconfigPath: './tsconfig.app.json' }
     }),
     AutoImport({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
@@ -41,8 +33,7 @@ export default defineConfig(({ mode }) => ({
 
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      ...(mode === 'development' ? devAliases : {})
+      '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
 

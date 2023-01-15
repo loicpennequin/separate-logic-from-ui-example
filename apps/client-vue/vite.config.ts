@@ -11,14 +11,7 @@ import Components from 'unplugin-vue-components/vite';
 // @ts-ignore smh
 import { HeadlessUiResolver } from 'unplugin-vue-components/resolvers';
 
-const devAliases = {
-  '@': fileURLToPath(new URL('./src', import.meta.url)),
-  '@daria/shared': fileURLToPath(
-    new URL('../../libs/shared/src', import.meta.url)
-  ),
-  '@daria/sdk': fileURLToPath(new URL('../../libs/sdk/src', import.meta.url))
-};
-export default defineConfig(({ mode }) => ({
+export default defineConfig(() => ({
   plugins: [
     VueRouter({
       routesFolder: fileURLToPath(new URL('./src/pages', import.meta.url)),
@@ -29,7 +22,7 @@ export default defineConfig(({ mode }) => ({
       compiler: 'vue3'
     }),
     checker({
-      vueTsc: { tsconfigPath: './tsconfig.dev.json' }
+      vueTsc: { tsconfigPath: './tsconfig.app.json' }
     }),
     AutoImport({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
@@ -59,8 +52,7 @@ export default defineConfig(({ mode }) => ({
 
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      ...(mode === 'development' ? devAliases : {})
+      '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   }
 }));
