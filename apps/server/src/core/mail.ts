@@ -25,7 +25,7 @@ export const mailerService = {
     const transporter = getTransport();
     return transporter
       .sendMail({
-        from: 'dotz@gmail.com',
+        from: 'my-app@gmail.com',
         to,
         subject: template.subject,
         html: template.body
