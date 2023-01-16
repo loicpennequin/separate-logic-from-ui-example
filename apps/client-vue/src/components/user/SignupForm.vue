@@ -6,10 +6,9 @@ import { z } from 'zod';
 
 const { push } = useRouter();
 const {
-  mutate: login,
+  mutate: signup,
   isLoading,
-  error,
-  reset
+  error
 } = useSignup({
   onSuccess() {
     push({ name: 'Home' });
@@ -17,25 +16,30 @@ const {
 });
 
 const FormSchema = SignUpDto.extend({
-  passwordConfirm: z.string()
+  passwordConfirm: z.string(),
+  isTosAccepted: z.boolean()
 }).refine(data => data.password === data.passwordConfirm, {
   message: "Passwords don't match",
   path: ['passwordConfirm']
 });
 type FormSchema = z.infer<typeof FormSchema>;
 
+const { data: featureFlags } = useFeatureFlags();
 const { handleSubmit } = useForm<FormSchema>({
   validationSchema: toFormValidator(FormSchema),
   initialValues: {
     email: '',
     password: '',
-    passwordConfirm: ''
+    passwordConfirm: '',
+    isTosAccepted: false
   }
 });
 
 const onSubmit = handleSubmit(values => {
-  reset();
-  login(values);
+  signup({
+    ...values,
+    tosAcceptedAt: values.isTosAccepted ? new Date() : undefined
+  });
 });
 </script>
 
@@ -66,6 +70,17 @@ const onSubmit = handleSubmit(values => {
       label="Confirm your password"
     >
       <UiPasswordInput v-bind="bind" v-on="on" />
+    </UiFormControl>
+
+    <UiFormControl
+      v-if="featureFlags?.ACCEPT_TOS_ON_SIGNUP"
+      id="signup-tos-accepted-at"
+      v-slot="{ bind, on }"
+      name="isTosAccepted"
+    >
+      <UiCheckbox type="checkbox" v-bind="bind" v-on="on">
+        I accept the terms and conditions
+      </UiCheckbox>
     </UiFormControl>
 
     <UiFormFooter>

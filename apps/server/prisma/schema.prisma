@@ -13,6 +13,8 @@ model User {
   updatedAt          DateTime?           @updatedAt
   email              String              @unique
   passwordHash       String              @unique
+  verifiedAt         DateTime?
+  tosAcceptedAt      DateTime?
   refreshToken       RefreshToken?
   passwordResetToken PasswordResetToken?
 }

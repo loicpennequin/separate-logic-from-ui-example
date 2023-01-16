@@ -9,10 +9,16 @@ import { queryKeys } from './utils/queryKeys';
 async function main() {
   try {
     await apiClient.authService.init();
-    queryClient.prefetchQuery(
-      queryKeys.SESSION(),
-      apiClient.authService.getSession
-    );
+    await Promise.all([
+      queryClient.prefetchQuery(
+        queryKeys.SESSION(),
+        apiClient.authService.getSession
+      ),
+      queryClient.prefetchQuery(
+        queryKeys.FEATURE_FLAGS(),
+        apiClient.featureFlagservice.getAll
+      )
+    ]);
   } finally {
     ReactDOM.createRoot(document.getElementById('app') as HTMLElement).render(
       <React.StrictMode>

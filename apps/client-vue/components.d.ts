@@ -22,6 +22,7 @@ declare module '@vue/runtime-core' {
     UiButtonIcon: typeof import('./src/components/ui/button/Icon.vue')['default']
     UiButtonLink: typeof import('./src/components/ui/button/Link.vue')['default']
     UiCenter: typeof import('./src/components/ui/Center.vue')['default']
+    UiCheckbox: typeof import('./src/components/ui/Checkbox.vue')['default']
     UiContainer: typeof import('./src/components/ui/Container.vue')['default']
     UiForm: typeof import('./src/components/ui/form/index.vue')['default']
     UiFormControl: typeof import('./src/components/ui/form/Control.vue')['default']

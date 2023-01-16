@@ -11,7 +11,7 @@ import { FormError } from '../ui/form/Error/Error';
 import { PasswordInput } from '../ui/PasswordInput/PasswordInput';
 
 export const LoginForm = () => {
-  const { mutate: login, error, reset } = useLogin();
+  const { mutate: login, error } = useLogin();
 
   const initialValues = {
     email: '',
@@ -22,7 +22,6 @@ export const LoginForm = () => {
     <Formik
       validationSchema={toFormikValidationSchema(LoginDto)}
       onSubmit={values => {
-        reset();
         login(values);
       }}
       initialValues={initialValues}

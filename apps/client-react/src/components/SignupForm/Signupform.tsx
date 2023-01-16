@@ -10,9 +10,11 @@ import { ButtonLink } from '../ui/Button/Link/Link';
 import { FormError } from '../ui/form/Error/Error';
 import z from 'zod';
 import { PasswordInput } from '../ui/PasswordInput/PasswordInput';
+import { useFeatureFlags } from '@/hooks/useFeatureFlags';
 
 const FormSchema = SignUpDto.extend({
-  passwordConfirm: z.string()
+  passwordConfirm: z.string(),
+  isTosAccepted: z.boolean()
 }).refine(data => data.password === data.passwordConfirm, {
   message: "Passwords don't match",
   path: ['passwordConfirm']
@@ -25,15 +27,20 @@ export const SignupForm = () => {
   const initialValues = {
     email: '',
     password: '',
-    passwordConfirm: ''
+    passwordConfirm: '',
+    isTosAccepted: false
   };
+
+  const { data: featureFlags } = useFeatureFlags();
 
   return (
     <Formik
       validationSchema={toFormikValidationSchema(FormSchema)}
       onSubmit={values => {
-        console.log(values);
-        signup(values);
+        signup({
+          ...values,
+          tosAcceptedAt: values.isTosAccepted ? new Date() : undefined
+        });
       }}
       initialValues={initialValues}
     >
@@ -54,6 +61,17 @@ export const SignupForm = () => {
           >
             {fieldProps => <PasswordInput {...fieldProps} />}
           </FormControl>
+
+          {featureFlags?.ACCEPT_TOS_ON_SIGNUP && (
+            <FormControl id="signup-tos-accepted" name="isTosAccepted">
+              {fieldProps => (
+                <label>
+                  <input type="checkbox" {...fieldProps} />I accept the terms
+                  and conditions.
+                </label>
+              )}
+            </FormControl>
+          )}
 
           <FormFooter>
             <ButtonCta type="submit">Sign up</ButtonCta>

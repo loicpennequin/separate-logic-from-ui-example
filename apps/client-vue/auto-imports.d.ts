@@ -158,6 +158,7 @@ declare global {
   const useEventSource: typeof import('@vueuse/core')['useEventSource']
   const useEyeDropper: typeof import('@vueuse/core')['useEyeDropper']
   const useFavicon: typeof import('@vueuse/core')['useFavicon']
+  const useFeatureFlags: typeof import('./src/composables/useFeatureFlags')['useFeatureFlags']
   const useFetch: typeof import('@vueuse/core')['useFetch']
   const useField: typeof import('vee-validate')['useField']
   const useFieldArray: typeof import('vee-validate')['useFieldArray']

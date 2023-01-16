@@ -14,6 +14,7 @@ declare global {
   const useDebugValue: typeof import('react')['useDebugValue']
   const useDeferredValue: typeof import('react')['useDeferredValue']
   const useEffect: typeof import('react')['useEffect']
+  const useFeatureFlags: typeof import('./src/hooks/useFeatureFlags')['useFeatureFlags']
   const useId: typeof import('react')['useId']
   const useImperativeHandle: typeof import('react')['useImperativeHandle']
   const useInfinitequery: typeof import('@tanstack/react-query')['useInfinitequery']

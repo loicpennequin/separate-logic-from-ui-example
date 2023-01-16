@@ -1,7 +1,8 @@
 import {
   FIFTEEN_MINUTES_IN_SECONDS,
   ONE_MINUTE_IN_SECONDS,
-  ONE_WEEK_IN_SECONDS
+  ONE_WEEK_IN_SECONDS,
+  EmailVerificationModes
 } from '@daria/shared';
 import z from 'zod';
 
@@ -30,6 +31,14 @@ const configSchema = z.object({
   SMTP: z.object({
     PORT: z.coerce.number(),
     HOST: z.string()
+  }),
+  FEATURE_FLAGS: z.object({
+    ACCEPT_TOS_ON_SIGNUP: z.coerce.number(),
+    EMAIL_VERIFICATION_ON_SIGNUP: z.enum([
+      EmailVerificationModes.NONE,
+      EmailVerificationModes.MANDATORY,
+      EmailVerificationModes.REMINDER
+    ])
   })
 });
 
@@ -61,5 +70,9 @@ export const config = configSchema.parse({
   SMTP: {
     HOST: process.env.SMTP_HOST,
     PORT: process.env.SMTP_PORT
+  },
+  FEATURE_FLAGS: {
+    ACCEPT_TOS_ON_SIGNUP: process.env.FEATURE_FLAGS_ACCEPT_TOS_ON_SIGNUP,
+    EMAIL_VERIFICATION_ON_SIGNUP: process.env.EMAIL_VERIFICATION_ON_SIGNUP
   }
 });

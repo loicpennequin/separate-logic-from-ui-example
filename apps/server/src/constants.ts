@@ -9,8 +9,9 @@ export const ERROR_MESSAGES = {
   NO_REFRESH_TOKEN: 'No refresh token provided',
   INVALID_REFRESH_TOKEN: 'The refresh token in invalid or corrupted',
   EMAIL_ALREADY_IN_USE: 'An account with this email already exists',
-  USER_NOT_FOUND_BY_EMAIL: 'No account was found using this email address'
-};
+  USER_NOT_FOUND_BY_EMAIL: 'No account was found using this email address',
+  TOS_NOT_ACCEPTED: 'You need to accept the conditions and terms of service'
+} as const;
 
 export const ERROR_CODES = {
   PARSE_ERROR: 'PARSE_ERROR',

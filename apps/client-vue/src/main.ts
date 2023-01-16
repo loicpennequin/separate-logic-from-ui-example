@@ -23,10 +23,16 @@ async function main() {
 
   try {
     await apiClient.authService.init();
-    queryClient.prefetchQuery(
-      queryKeys.SESSION(),
-      apiClient.authService.getSession
-    );
+    await Promise.all([
+      queryClient.prefetchQuery(
+        queryKeys.SESSION(),
+        apiClient.authService.getSession
+      ),
+      queryClient.prefetchQuery(
+        queryKeys.FEATURE_FLAGS(),
+        apiClient.featureFlagservice.getAll
+      )
+    ]);
   } finally {
     const app = createApp(App);
     app.provide(API_INJECTION_KEY, apiClient);

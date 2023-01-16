@@ -14,7 +14,8 @@ export type UserResponse = z.infer<typeof UserResponse>;
 
 export const SignUpDto = z.object({
   email: z.string().email().trim(),
-  password: z.string().min(PASSWORD_MIN_LENGTH).max(PASSWORD_MAX_LENGTH).trim()
+  password: z.string().min(PASSWORD_MIN_LENGTH).max(PASSWORD_MAX_LENGTH).trim(),
+  tosAcceptedAt: z.date().optional()
 });
 export type SignUpDto = z.infer<typeof SignUpDto>;
 export const SignUpResponse = LoginResponse.extend({

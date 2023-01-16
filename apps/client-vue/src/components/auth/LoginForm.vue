@@ -3,14 +3,13 @@ import { useForm } from 'vee-validate';
 import { toFormValidator } from '@vee-validate/zod';
 import { LoginDto } from '@daria/shared';
 
-const { mutate: login, isLoading, error, reset } = useLogin();
+const { mutate: login, isLoading, error } = useLogin();
 
 const { handleSubmit } = useForm<LoginDto>({
   validationSchema: toFormValidator(LoginDto)
 });
 
 const onSubmit = handleSubmit(values => {
-  reset();
   login(values);
 });
 </script>
@@ -18,7 +17,7 @@ const onSubmit = handleSubmit(values => {
 <template>
   <UiForm @submit.prevent="onSubmit" class="login-form">
     <UiFormControl
-      id="signup-mail"
+      id="login-mail"
       v-slot="{ on, bind }"
       name="email"
       label="E-mail"
@@ -27,7 +26,7 @@ const onSubmit = handleSubmit(values => {
     </UiFormControl>
 
     <UiFormControl
-      id="signup-password"
+      id="login-password"
       v-slot="{ bind, on }"
       name="password"
       label="Password"

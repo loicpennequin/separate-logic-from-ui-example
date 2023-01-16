@@ -7,7 +7,7 @@ import { useField } from 'formik';
 type Props = {
   name: string;
   id: string;
-  label: string;
+  label?: string;
   children: (options: any) => ReactNode;
 };
 
