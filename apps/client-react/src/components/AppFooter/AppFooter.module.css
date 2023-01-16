@@ -1,0 +1,9 @@
+.appFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.appFooter span {
+  text-decoration: line-through;
+}
