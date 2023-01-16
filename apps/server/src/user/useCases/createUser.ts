@@ -8,7 +8,7 @@ import { config } from '../../config';
 export const createUserUseCase = async (dto: SignUpDto) => {
   const exists = await userRepo.findByEmail(dto.email);
 
-  if (config.FEATURE_FLAGS.EMAIL_VERIFICATION_ON_SIGNUP && !dto.tosAcceptedAt) {
+  if (config.FEATURE_FLAGS.ACCEPT_TOS_ON_SIGNUP && !dto.tosAcceptedAt) {
     throw errors.badRequest(ERROR_MESSAGES.TOS_NOT_ACCEPTED);
   }
 
