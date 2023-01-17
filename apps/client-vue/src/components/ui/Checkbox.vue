@@ -37,6 +37,7 @@ const vModel = useVModel(props, 'modelValue', emit);
 label {
   display: flex;
   gap: var(--space-3);
+  align-items: center;
 }
 
 input[type='checkbox'] {

@@ -4,6 +4,7 @@ useAuthGuard();
 
 <template>
   <div class="layout">
+    <AppToSModal />
     <AppHeader class="header" />
     <main><router-view /></main>
     <AppFooter />

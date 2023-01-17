@@ -26,6 +26,12 @@
 
   --color-error: hsl(var(--red), 50%);
   --color-on-error: var(--color-text-light);
+
+  --color-error-dark: hsl(var(--red), 40%);
+  --color-on-error-dark: var(--color-text-light);
+  
+  --color-error-darker: hsl(var(--red), 35%);
+  --color-on-error-darker: var(--color-text-light);
   
   --font-primary: Lato;
 

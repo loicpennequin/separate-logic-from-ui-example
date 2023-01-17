@@ -1,3 +1,18 @@
+<script setup lang="ts">
+const props = withDefaults(defineProps<{ variant?: 'primary' | 'error' }>(), {
+  variant: 'primary'
+});
+
+const colors = computed(() => ({
+  bg: `var(--color-${props.variant})`,
+  bgHover: `var(--color-${props.variant}-dark)`,
+  bgFocus: `var(--color-${props.variant}-darker)`,
+  text: `var(--color-on-${props.variant})`,
+  textHover: `var(--color-on-${props.variant}-dark)`,
+  textFocus: `var(--color-on-${props.variant}-darker)`
+}));
+</script>
+
 <template>
   <UiButtonBase class="button-full">
     <template #left><slot name="left" /></template>
@@ -8,15 +23,15 @@
 
 <style scoped>
 .button-full {
-  background-color: var(--color-primary);
-  color: var(--color-on-primary);
+  background-color: v-bind('colors.bg');
+  color: v-bind('colors.text');
 }
 .button-full:hover {
-  background-color: var(--color-primary-dark);
-  color: var(--color-on-primary-dark);
+  background-color: v-bind('colors.bgHover');
+  color: v-bind('colors.textHover');
 }
-.button-full:focus {
-  background-color: var(--color-primary-darker);
-  color: var(--color-on-primary-darker);
+.button-full:focus-visible {
+  background-color: v-bind('colors.bgFocus');
+  color: v-bind('colors.textFocus');
 }
 </style>

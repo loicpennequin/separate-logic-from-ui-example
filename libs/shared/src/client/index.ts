@@ -9,6 +9,7 @@ import { createTosService } from './tosService';
 export type { AuthService } from './authService';
 export type { UserService } from './userService';
 export type { FeatureFlagService } from './featureFlagsService';
+export type { TosService } from './tosService';
 
 export type ApiClientError = TRPCClientError<TrpcRouter>;
 

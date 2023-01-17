@@ -7,7 +7,8 @@ export const UserResponse = z.object({
   id: z.string(),
   email: z.string().email(),
   createdAt: z.date(),
-  updatedAt: z.date().nullable()
+  updatedAt: z.date().nullable(),
+  tosAcceptedAt: z.date().nullable()
 });
 
 export type UserResponse = z.infer<typeof UserResponse>;

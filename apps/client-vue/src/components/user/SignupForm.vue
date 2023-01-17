@@ -35,6 +35,8 @@ const { handleSubmit } = useForm<FormSchema>({
   }
 });
 
+const isTosModalOpened = ref(false);
+
 const onSubmit = handleSubmit(values => {
   signup({
     ...values,
@@ -45,6 +47,8 @@ const onSubmit = handleSubmit(values => {
 
 <template>
   <UiForm @submit.prevent="onSubmit" class="signup-form">
+    <AppToSModal v-model:is-opened="isTosModalOpened" />
+
     <UiFormControl
       id="signup-mail"
       v-slot="{ on, bind }"
@@ -79,7 +83,10 @@ const onSubmit = handleSubmit(values => {
       name="isTosAccepted"
     >
       <UiCheckbox type="checkbox" v-bind="bind" v-on="on">
-        I accept the terms and conditions
+        I accept the
+        <UiButtonLink @click="isTosModalOpened = true" type="button">
+          terms and conditions
+        </UiButtonLink>
       </UiCheckbox>
     </UiFormControl>
 

@@ -10,5 +10,9 @@ export const coreRouter = router({
 
   getLatestTos: procedure.query(() => {
     return tosRepo.findLatest();
-  })
+  }),
+
+  acceptTos: procedure
+    .meta({ needsAuth: true })
+    .query(({ ctx }) => tosRepo.acceptTos(ctx.session!.id))
 });

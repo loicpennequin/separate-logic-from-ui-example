@@ -6,6 +6,9 @@ export const createTosService = (trpcClient: TrpcClient) => {
   return {
     getLatest() {
       return trpcClient.core.getLatestTos.query();
+    },
+    accept() {
+      return trpcClient.core.acceptTos.query();
     }
   };
 };
