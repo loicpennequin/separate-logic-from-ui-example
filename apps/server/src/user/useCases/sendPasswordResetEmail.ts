@@ -1,8 +1,8 @@
 import { config } from '../../config';
 import { ERROR_MESSAGES } from '../../constants';
-import { randomHash } from '../../core/encryptionService';
+import { randomHash } from '../../core/services/encryption';
 import { errors } from '../../core/errorFactory';
-import { mailerService } from '../../core/mail';
+import { mailerService } from '../../core/services/mail';
 import { passwordResetTokenRepo } from '../repositories/passwordResetToken';
 import { userRepo } from '../repositories/user';
 

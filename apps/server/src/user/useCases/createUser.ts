@@ -1,5 +1,5 @@
 import type { SignUpDto } from '@daria/shared';
-import { hashPassword } from '../../core/encryptionService';
+import { hashPassword } from '../../core/services/encryption';
 import { userRepo } from '../repositories/user';
 import { errors } from '../../core/errorFactory';
 import { ERROR_MESSAGES } from '../../constants';

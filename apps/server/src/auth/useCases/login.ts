@@ -1,7 +1,7 @@
 import type { LoginDto } from '@daria/shared';
 import { errors } from '../../core/errorFactory';
 import { ERROR_MESSAGES } from '../../constants';
-import { comparePassword } from '../../core/encryptionService';
+import { comparePassword } from '../../core/services/encryption';
 import { userRepo } from '../../user/repositories/user';
 import { getTokens } from '../services/auth';
 

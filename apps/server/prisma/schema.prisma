@@ -34,3 +34,10 @@ model PasswordResetToken {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String   @unique
 }
+
+model TermsOfServiceHistory {
+  id        String    @id @unique @default(cuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  content   String    @db.Text
+}

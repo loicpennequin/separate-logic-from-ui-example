@@ -1,5 +1,5 @@
 import { ERROR_MESSAGES } from '../../constants';
-import { hashPassword } from '../../core/encryptionService';
+import { hashPassword } from '../../core/services/encryption';
 import { errors } from '../../core/errorFactory';
 import { userRepo } from '../repositories/user';
 

@@ -3,7 +3,7 @@ import { config } from '../../config';
 import type { UUID } from '../../utils';
 import { errors } from '../../core/errorFactory';
 import { ERROR_MESSAGES } from '../../constants';
-import { randomHash } from '../../core/encryptionService';
+import { randomHash } from '../../core/services/encryption';
 
 export const generateTokens = (userId: UUID) => {
   return {
