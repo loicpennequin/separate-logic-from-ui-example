@@ -19,6 +19,14 @@ export const createUserService = (trpcClient: TrpcClient) => {
 
     resetPassword(data: ResetPasswordDto) {
       return trpcClient.user.resetPassword.mutate(data);
+    },
+
+    verifyEmail(token: string) {
+      return trpcClient.user.verifyEmail.mutate({ token });
+    },
+
+    sendVerificationEmail(email: string) {
+      return trpcClient.user.sendVerificationEmail.mutate({ email });
     }
   };
 

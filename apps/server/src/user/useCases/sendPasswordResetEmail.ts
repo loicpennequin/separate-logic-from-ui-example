@@ -1,10 +1,11 @@
 import { config } from '../../config';
-import { ERROR_MESSAGES } from '../../constants';
+import { ErrorKinds } from '@daria/shared';
 import { randomHash } from '../../core/services/encryption';
 import { errors } from '../../core/errorFactory';
 import { mailerService } from '../../core/services/mail';
 import { passwordResetTokenRepo } from '../repositories/passwordResetToken';
 import { userRepo } from '../repositories/user';
+import { CLIENT_ENDPOINTS } from '../../constants';
 
 const passwordResetMailTemplate = (link: string, username?: string) => {
   return {
@@ -18,16 +19,14 @@ const passwordResetMailTemplate = (link: string, username?: string) => {
 export const sendPasswordResetEmailUseCase = async (email: string) => {
   const user = await userRepo.findByEmail(email);
 
-  if (!user) throw errors.notFound(ERROR_MESSAGES.USER_NOT_FOUND_BY_EMAIL);
+  if (!user) throw errors.notFound(ErrorKinds.USER_NOT_FOUND_BY_EMAIL);
   const token = randomHash();
 
   await passwordResetTokenRepo.upsertByUserId(user.id, token);
 
   await mailerService.sendMail({
     to: user.email,
-    template: passwordResetMailTemplate(
-      `${config.WEBSITE_URL}/reset-password?token=${token}`
-    )
+    template: passwordResetMailTemplate(CLIENT_ENDPOINTS.RESET_PASSWORD(token))
   });
 
   return { success: true };

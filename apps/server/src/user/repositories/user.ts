@@ -13,6 +13,9 @@ export const userRepo = {
   findByPasswordResetToken: (value: string) =>
     db.passwordResetToken.findUnique({ where: { value } }).user(),
 
+  findByVerificationToken: (value: string) =>
+    db.verificationToken.findUnique({ where: { value } }).user(),
+
   create: (data: Prisma.UserCreateInput) => {
     return db.user.create({
       data
@@ -26,6 +29,13 @@ export const userRepo = {
         passwordHash,
         passwordResetToken: { delete: true }
       }
+    });
+  },
+
+  verifyById: async (id: UUID) => {
+    return db.user.update({
+      where: { id },
+      data: { verifiedAt: new Date(), verificationToken: { delete: true } }
     });
   }
 };

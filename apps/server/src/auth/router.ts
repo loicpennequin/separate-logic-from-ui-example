@@ -1,4 +1,5 @@
 import {
+  ErrorKinds,
   LoginDto,
   LoginResponse,
   LogoutResponse,
@@ -7,7 +8,7 @@ import {
   isString
 } from '@daria/shared';
 import { procedure, router } from '../trpc/router';
-import { ERROR_MESSAGES, REFRESH_TOKEN_COOKIE } from '../constants';
+import { REFRESH_TOKEN_COOKIE } from '../constants';
 import { loginUseCase } from './useCases/login';
 import { logoutUseCase } from './useCases/logout';
 import { errors } from '../core/errorFactory';
@@ -41,7 +42,7 @@ export const authRouter = router({
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       const cookie = ctx.req.cookies?.[REFRESH_TOKEN_COOKIE] as string;
       if (!cookie) {
-        throw errors.unauthorized(ERROR_MESSAGES.NO_REFRESH_TOKEN);
+        throw errors.unauthorized(ErrorKinds.NO_REFRESH_TOKEN);
       }
 
       try {

@@ -1,17 +1,22 @@
 <script setup lang="ts">
 import { useForm } from 'vee-validate';
 import { toFormValidator } from '@vee-validate/zod';
-import { LoginDto } from '@daria/shared';
+import { ErrorKinds, LoginDto } from '@daria/shared';
 
 const { mutate: login, isLoading, error } = useLogin();
 
-const { handleSubmit } = useForm<LoginDto>({
+const { handleSubmit, values } = useForm<LoginDto>({
   validationSchema: toFormValidator(LoginDto)
 });
 
 const onSubmit = handleSubmit(values => {
   login(values);
 });
+
+const { mutate: sendVerificationEmail } = useSendVerificationEmail();
+const isVerificationLinkDisplayed = computed(
+  () => error.value?.data?.kind === ErrorKinds.EMAIL_NOT_VERIFIED
+);
 </script>
 
 <template>
@@ -39,7 +44,16 @@ const onSubmit = handleSubmit(values => {
       <UiButtonLink to="/lost-password">Forgot your password ?</UiButtonLink>
     </UiFormFooter>
 
-    <UiFormError :error="error.message" v-if="error" />
+    <div class="error">
+      <UiFormError :error="error.message" v-if="error" />
+      <UiButtonLink
+        type="button"
+        v-if="isVerificationLinkDisplayed"
+        @click="sendVerificationEmail(values.email)"
+      >
+        Resend confirmation email
+      </UiButtonLink>
+    </div>
   </UiForm>
 </template>
 
@@ -47,6 +61,12 @@ const onSubmit = handleSubmit(values => {
 .login-form {
   display: flex;
   flex-direction: column;
+  gap: var(--space-4);
+}
+
+.error {
+  display: flex;
+  align-items: center;
   gap: var(--space-4);
 }
 </style>

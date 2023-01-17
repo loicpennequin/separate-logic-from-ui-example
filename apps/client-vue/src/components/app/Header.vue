@@ -6,6 +6,7 @@ const { mutate: logout } = useLogout();
 
 <template>
   <header>
+    <UserVerifyEmailReminder />
     <UiContainer class="inner">
       <router-link to="/" class="home-link">
         <IconLogo />
@@ -15,6 +16,7 @@ const { mutate: logout } = useLogout();
       <nav>
         <ul>
           <template v-if="session">
+            <li>Hello, {{ session.email }}</li>
             <li>
               <button @click="logout(undefined)">Logout</button>
             </li>
@@ -41,7 +43,6 @@ const { mutate: logout } = useLogout();
 header {
   background-color: var(--color-surface);
   color: var(--color-on-surface);
-  padding: var(--space-5);
 }
 
 .home-link {
@@ -50,6 +51,7 @@ header {
   align-items: center;
 }
 .inner {
+  padding: var(--space-5);
   justify-content: space-between;
 }
 

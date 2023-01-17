@@ -1,14 +1,15 @@
+import { ErrorKinds, ErrorMessages } from '@daria/shared';
 import { ERROR_CODES, type ErrorCode } from '../constants';
 
 class AppError extends Error {
   isAppError = true;
 
   constructor(
-    message: string,
+    public kind: ErrorKinds,
     public code: ErrorCode,
     public httpStatus: number
   ) {
-    super(message);
+    super(ErrorMessages[kind]);
   }
 }
 
@@ -17,8 +18,8 @@ export const isAppError = (x: unknown): x is AppError => {
 };
 
 const createAppError =
-  (code: ErrorCode, httpStatus: number) => (message: string) =>
-    new AppError(message, code, httpStatus);
+  (code: ErrorCode, httpStatus: number) => (kind: ErrorKinds) =>
+    new AppError(kind, code, httpStatus);
 
 export const errors = {
   unauthorized: createAppError(ERROR_CODES.UNAUTHORIZED, 401),

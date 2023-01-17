@@ -8,7 +8,8 @@ export const UserResponse = z.object({
   email: z.string().email(),
   createdAt: z.date(),
   updatedAt: z.date().nullable(),
-  tosAcceptedAt: z.date().nullable()
+  tosAcceptedAt: z.date().nullable(),
+  verifiedAt: z.date().nullable()
 });
 
 export type UserResponse = z.infer<typeof UserResponse>;
@@ -19,8 +20,9 @@ export const SignUpDto = z.object({
   tosAcceptedAt: z.date().optional()
 });
 export type SignUpDto = z.infer<typeof SignUpDto>;
-export const SignUpResponse = LoginResponse.extend({
-  user: UserResponse
+export const SignUpResponse = z.object({
+  user: UserResponse,
+  accessToken: z.string().optional()
 });
 export type SignUpResponse = z.infer<typeof SignUpResponse>;
 
@@ -40,3 +42,17 @@ export const ResetPasswordDto = z.object({
 export type ResetPasswordDto = z.infer<typeof ResetPasswordDto>;
 export const ResetPasswordResponse = DefaultResponse;
 export type ResetPasswordResponse = DefaultResponse;
+
+export const SendVerificationEmailDto = z.object({
+  email: z.string().email()
+});
+export type SendVerificationEmailDto = z.infer<typeof SendVerificationEmailDto>;
+export const SendVerificationEmailResponse = DefaultResponse;
+export type SendVerificationEmailEmailResponse = DefaultResponse;
+
+export const VerifyEmailDto = z.object({
+  token: z.string()
+});
+export type VerifyEmailDto = z.infer<typeof VerifyEmailDto>;
+export const VerifyEmailResponse = LoginResponse;
+export type VerifyEmailResponse = LoginResponse;

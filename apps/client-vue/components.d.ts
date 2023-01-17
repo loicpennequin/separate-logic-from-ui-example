@@ -42,5 +42,6 @@ declare module '@vue/runtime-core' {
     UserLostPasswordForm: typeof import('./src/components/user/LostPasswordForm.vue')['default']
     UserResetPasswordForm: typeof import('./src/components/user/ResetPasswordForm.vue')['default']
     UserSignupForm: typeof import('./src/components/user/SignupForm.vue')['default']
+    UserVerifyEmailReminder: typeof import('./src/components/user/VerifyEmailReminder.vue')['default']
   }
 }

@@ -17,6 +17,7 @@ model User {
   tosAcceptedAt      DateTime?
   refreshToken       RefreshToken?
   passwordResetToken PasswordResetToken?
+  verificationToken  VerificationToken?
 }
 
 model RefreshToken {
@@ -28,6 +29,14 @@ model RefreshToken {
 }
 
 model PasswordResetToken {
+  id        String   @id @unique @default(cuid())
+  createdAt DateTime @default(now())
+  value     String   @unique @db.VarChar(200)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String   @unique
+}
+
+model VerificationToken {
   id        String   @id @unique @default(cuid())
   createdAt DateTime @default(now())
   value     String   @unique @db.VarChar(200)

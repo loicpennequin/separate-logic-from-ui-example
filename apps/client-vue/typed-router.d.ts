@@ -41,6 +41,8 @@ declare module 'vue-router/auto/routes' {
     '/protected': RouteRecordInfo<'/protected', '/protected', Record<never, never>, Record<never, never>>,
     'ResetPassword': RouteRecordInfo<'ResetPassword', '/reset-password', Record<never, never>, Record<never, never>>,
     'SignUp': RouteRecordInfo<'SignUp', '/signup', Record<never, never>, Record<never, never>>,
+    '/signup-confirm': RouteRecordInfo<'/signup-confirm', '/signup-confirm', Record<never, never>, Record<never, never>>,
+    '/verify': RouteRecordInfo<'/verify', '/verify', Record<never, never>, Record<never, never>>,
   }
 }
 

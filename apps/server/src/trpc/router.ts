@@ -2,7 +2,7 @@ import { initTRPC } from '@trpc/server';
 import superjson from 'superjson';
 import chalk from 'chalk';
 import type { Context } from './context';
-import { ERROR_MESSAGES } from '../constants';
+import { ErrorKinds } from '@daria/shared';
 import { errors, isAppError } from '../core/errorFactory';
 
 export const logger = (...messages: string[]) =>
@@ -21,13 +21,20 @@ export const t = initTRPC
           ...shape,
           data: {
             ...shape.data,
+            kind: error.cause.kind,
             code: error.cause.code,
             httpStatus: error.cause.httpStatus
           }
         };
       }
 
-      return shape;
+      return {
+        ...shape,
+        data: {
+          ...shape.data,
+          kind: ErrorKinds.UNEXPECTED
+        }
+      };
     }
   });
 
@@ -44,7 +51,7 @@ const loggerMiddleware = t.middleware(async ({ path, next }) => {
 
 const authMiddleware = t.middleware(({ ctx, meta, next }) => {
   if (meta?.needsAuth && !ctx.session) {
-    throw errors.unauthorized(ERROR_MESSAGES.UNAUTHORIZED);
+    throw errors.unauthorized(ErrorKinds.UNAUTHORIZED);
   }
   return next();
 });

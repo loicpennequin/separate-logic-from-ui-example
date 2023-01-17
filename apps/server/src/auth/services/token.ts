@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import { config } from '../../config';
 import type { UUID } from '../../utils';
 import { errors } from '../../core/errorFactory';
-import { ERROR_MESSAGES } from '../../constants';
+import { ErrorKinds } from '@daria/shared';
 import { randomHash } from '../../core/services/encryption';
 
 export const generateTokens = (userId: UUID) => {
@@ -22,7 +22,7 @@ const verifyToken = (token: string, secret: string) => {
       complete: false
     });
   } catch {
-    throw errors.unauthorized(ERROR_MESSAGES.INVALID_JWT);
+    throw errors.unauthorized(ErrorKinds.INVALID_JWT);
   }
 };
 
