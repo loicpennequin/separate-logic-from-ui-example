@@ -14,5 +14,5 @@ export const coreRouter = router({
 
   acceptTos: procedure
     .meta({ needsAuth: true })
-    .query(({ ctx }) => tosRepo.acceptTos(ctx.session!.id))
+    .mutation(({ ctx }) => tosRepo.acceptTos(ctx.session!.id))
 });
