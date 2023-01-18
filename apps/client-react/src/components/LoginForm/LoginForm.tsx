@@ -13,22 +13,20 @@ import styles from './LoginForm.module.css';
 
 export const LoginForm = () => {
   const { mutate: login, error } = useLogin();
+  const { mutate: sendVerificationEmail } = useSendVerificationEmail();
+
+  const isVerificationLinkDisplayed =
+    error?.data?.kind === ErrorKinds.EMAIL_NOT_VERIFIED;
 
   const initialValues = {
     email: '',
     password: ''
   };
-
-  const { mutate: sendVerificationEmail } = useSendVerificationEmail();
-  const isVerificationLinkDisplayed =
-    error?.data?.kind === ErrorKinds.EMAIL_NOT_VERIFIED;
-
+  const onSubmit = (values: LoginDto) => login(values);
   return (
     <Formik
       validationSchema={toFormikValidationSchema(LoginDto)}
-      onSubmit={values => {
-        login(values);
-      }}
+      onSubmit={onSubmit}
       initialValues={initialValues}
     >
       {props => (

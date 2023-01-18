@@ -64,5 +64,6 @@ const slots = useSlots();
   padding-inline: var(--space-3);
   padding-block: var(--space-2);
   min-width: 0;
+  border: none;
 }
 </style>

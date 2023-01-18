@@ -21,6 +21,7 @@ The business logic is located in the `libs/shared package`.
 - Api will be available on`http://localhost:5000
 - Vue front end will be available on`http://localhost:5173
 - React front end will be available on`http://localhost:5174
+- incoming email can be seen at http://localhost:8080
 
 ## TODO
 

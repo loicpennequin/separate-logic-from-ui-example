@@ -31,6 +31,8 @@ const on = {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  border: none;
+  padding: 0;
 }
 
 .form-control > label {
