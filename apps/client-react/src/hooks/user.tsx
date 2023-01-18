@@ -14,6 +14,9 @@ export const useSignup = (options: UseSignupOptions = {}) => {
     mutationKey: queryKeys.SIGNUP(),
     mutationFn: userService.signup,
     onSuccess(data, ...args) {
+      if (!data.accessToken) {
+        return navigate('/signup-confirm');
+      }
       authService.token = data.accessToken;
       qc.refetchQueries({ queryKey: queryKeys.SESSION() });
       navigate('/');
