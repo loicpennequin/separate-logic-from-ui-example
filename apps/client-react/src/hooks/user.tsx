@@ -48,3 +48,40 @@ export const useResetPassword = (options: UseResetPasswordOptions = {}) => {
     mutationFn: userService.resetPassword
   });
 };
+
+export type UseVerifyEmailOptions = ApiClientMutationOptions<
+  UserService['verifyEmail']
+>;
+export const useVerifyEmail = (options: UseVerifyEmailOptions = {}) => {
+  const qc = useQueryClient();
+  const navigate = useNavigate();
+  const { userService, authService } = useApiClient();
+
+  return useMutation({
+    ...options,
+    mutationKey: queryKeys.VERIFY_EMAIL(),
+    mutationFn: userService.verifyEmail,
+    onSuccess(data, ...args) {
+      authService.token = data.accessToken;
+      qc.refetchQueries({ queryKey: queryKeys.SESSION() });
+      navigate('/');
+
+      return options.onSuccess?.(data, ...args);
+    }
+  });
+};
+
+export type UseSendVerificationEmailOptions = ApiClientMutationOptions<
+  UserService['sendVerificationEmail']
+>;
+export const useSendVerificationEmail = (
+  options: UseSendVerificationEmailOptions = {}
+) => {
+  const { userService } = useApiClient();
+
+  return useMutation({
+    ...options,
+    mutationKey: queryKeys.SEND_VERIFY_EMAIL(),
+    mutationFn: userService.sendVerificationEmail
+  });
+};

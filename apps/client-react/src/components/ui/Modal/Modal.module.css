@@ -1,0 +1,24 @@
+.modal {
+  position: relative;
+  z-index: 20;
+  color: white;
+}
+
+.modal > div {
+  position: fixed;
+  inset: 0;
+  overflow-y: auto;
+  display: grid;
+  justify-items: center;
+}
+
+.modal > div > * {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}

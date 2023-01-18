@@ -36,6 +36,8 @@
           <li>User Login</li>
           <li>Silent session refresh</li>
           <li>Password recovery</li>
+          <li>Email verification (togglable)</li>
+          <li>Terms of service updates(togglable)</li>
         </ul>
       </section>
     </UiSurface>
