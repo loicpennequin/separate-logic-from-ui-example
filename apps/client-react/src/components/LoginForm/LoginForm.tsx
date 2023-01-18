@@ -1,4 +1,4 @@
-import { LoginDto } from '@daria/shared';
+import { ErrorKinds, LoginDto } from '@daria/shared';
 import { Form } from '../ui/form/Form';
 import { FormControl } from '../ui/form/Control/Control';
 import { TextInput } from '../ui/TextInput/TextInput';
@@ -9,6 +9,7 @@ import { FormFooter } from '../ui/form/Footer/Footer';
 import { ButtonLink } from '../ui/Button/Link/Link';
 import { FormError } from '../ui/form/Error/Error';
 import { PasswordInput } from '../ui/PasswordInput/PasswordInput';
+import styles from './LoginForm.module.css';
 
 export const LoginForm = () => {
   const { mutate: login, error } = useLogin();
@@ -17,6 +18,10 @@ export const LoginForm = () => {
     email: '',
     password: ''
   };
+
+  const { mutate: sendVerificationEmail } = useSendVerificationEmail();
+  const isVerificationLinkDisplayed =
+    error?.data?.kind === ErrorKinds.EMAIL_NOT_VERIFIED;
 
   return (
     <Formik
@@ -41,7 +46,19 @@ export const LoginForm = () => {
             <ButtonLink to="/lost-password">Forgot your password ?</ButtonLink>
           </FormFooter>
 
-          {error && <FormError error={error.message} />}
+          {error && (
+            <div className={styles.error}>
+              <FormError error={error.message} />
+              {isVerificationLinkDisplayed && (
+                <ButtonLink
+                  type="button"
+                  onClick={() => sendVerificationEmail(props.values.email)}
+                >
+                  Resend confirmation email
+                </ButtonLink>
+              )}
+            </div>
+          )}
         </Form>
       )}
     </Formik>

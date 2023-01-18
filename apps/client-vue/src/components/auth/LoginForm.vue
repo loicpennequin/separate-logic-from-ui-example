@@ -45,7 +45,7 @@ const isVerificationLinkDisplayed = computed(
     </UiFormFooter>
 
     <div class="error">
-      <UiFormError :error="error.message" v-if="error" />
+      <UiFormError v-if="error" :error="error.message" />
       <UiButtonLink
         type="button"
         v-if="isVerificationLinkDisplayed"

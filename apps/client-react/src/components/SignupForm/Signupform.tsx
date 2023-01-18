@@ -73,7 +73,7 @@ export const SignupForm = () => {
             {featureFlags?.ACCEPT_TOS_ON_SIGNUP && (
               <FormControl id="signup-tos-accepted" name="isTosAccepted">
                 {fieldProps => (
-                  <label>
+                  <label style={{ display: 'flex', alignItems: 'center' }}>
                     <input type="checkbox" {...fieldProps} />I accept the
                     <ButtonLink
                       onClick={() => setIsTosModalOpened(true)}

@@ -26,7 +26,6 @@ export const TosModal: FC<Props> = ({ isOpened, onChange }) => {
     if (!session) return false;
     if (!tos) return false;
     if (!session.tosAcceptedAt) return true;
-
     return tos.createdAt.getTime() > session.tosAcceptedAt?.getTime();
   }, [isControlled, session, tos, isOpened]);
 

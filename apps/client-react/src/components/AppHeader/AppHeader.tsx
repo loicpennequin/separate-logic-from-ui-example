@@ -4,6 +4,7 @@ import styles from './AppHeader.module.css';
 import { clsx } from 'clsx';
 import { Container } from '../ui/Container/Container';
 import IconLogo from '~icons/vscode-icons/file-type-reactjs';
+import { VerifyEmailReminder } from '../VerifyemailReminder/VerifyEmailReminder';
 
 type Props = HTMLAttributes<HTMLElement>;
 
@@ -13,6 +14,8 @@ export const AppHeader = ({ className, ...props }: Props) => {
 
   return (
     <header {...props} className={clsx(styles.appHeader, className)}>
+      <VerifyEmailReminder />
+
       <Container className={styles.inner}>
         <Link to="/" className={styles.homeLink}>
           <IconLogo />
@@ -23,6 +26,7 @@ export const AppHeader = ({ className, ...props }: Props) => {
           <ul>
             {session ? (
               <>
+                <li>Hello, {session.email}</li>
                 <li>
                   <button onClick={() => logout(undefined)}>Logout</button>
                 </li>

@@ -18,7 +18,8 @@ export const createUserUseCase = async (dto: SignUpDto) => {
 
   const user = await userRepo.create({
     email: dto.email,
-    passwordHash: await hashPassword(dto.password)
+    passwordHash: await hashPassword(dto.password),
+    tosAcceptedAt: dto.tosAcceptedAt
   });
 
   if (

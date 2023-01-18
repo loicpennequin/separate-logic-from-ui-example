@@ -17,7 +17,6 @@ The business logic is located in the `libs/shared package`.
 - Install docker and docker-compose
 - Start the database and mailing service using `docker-compose up -d`
 - Install the app dependencies using `yarn install`
-- **(⚠️ if using react client)** change the `EMAIL_VERIFICATION_ON_SIGNUP=MANDATORY` environment variable in `apps/server/.env.local` to `NONE`, as these features have not yet been implemented in the react front end.
 - Run `yarn dev`
 - Api will be available on`http://localhost:5000
 - Vue front end will be available on`http://localhost:5173
@@ -27,3 +26,4 @@ The business logic is located in the `libs/shared package`.
 
 - Move server side business logic to the shared packaghe to show how you could do the same thing as the front end code, for example using a graphQL or REST API instead of tRPC
 - Add tests (I know, I know :D)
+- Add animations to the react app (framer motion ? treac-transition-group ?)

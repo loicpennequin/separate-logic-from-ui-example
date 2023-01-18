@@ -1,10 +1,10 @@
 .appHeader {
   background-color: var(--color-surface);
   color: var(--color-on-surface);
-  padding: var(--space-5);
 }
 
 .inner {
+  padding: var(--space-5);
   justify-content: space-between;
 }
 

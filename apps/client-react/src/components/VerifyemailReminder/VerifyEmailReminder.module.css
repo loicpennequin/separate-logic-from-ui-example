@@ -1,0 +1,7 @@
+.verifyEmailReminder {
+  background-color: var(--color-warning);
+  padding: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
