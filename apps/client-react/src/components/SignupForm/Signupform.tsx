@@ -11,6 +11,7 @@ import { FormError } from '../ui/form/Error/Error';
 import z from 'zod';
 import { PasswordInput } from '../ui/PasswordInput/PasswordInput';
 import { useFeatureFlags } from '@/hooks/useFeatureFlags';
+import { TosModal } from '../TosModal/TosModal';
 
 const FormSchema = SignUpDto.extend({
   passwordConfirm: z.string(),
@@ -22,6 +23,7 @@ const FormSchema = SignUpDto.extend({
 type FormSchema = z.infer<typeof FormSchema>;
 
 export const SignupForm = () => {
+  const [isTosModalOpened, setIsTosModalOpened] = useState(false);
   const { mutate: signup, error } = useSignup();
 
   const initialValues = {
@@ -34,53 +36,65 @@ export const SignupForm = () => {
   const { data: featureFlags } = useFeatureFlags();
 
   return (
-    <Formik
-      validationSchema={toFormikValidationSchema(FormSchema)}
-      onSubmit={values => {
-        signup({
-          ...values,
-          tosAcceptedAt: values.isTosAccepted ? new Date() : undefined
-        });
-      }}
-      initialValues={initialValues}
-    >
-      {props => (
-        <Form onSubmit={props.handleSubmit}>
-          <FormControl id="signup-mail" name="email" label="E-mail">
-            {fieldProps => <TextInput {...fieldProps} />}
-          </FormControl>
+    <>
+      <TosModal
+        isOpened={isTosModalOpened}
+        onChange={val => setIsTosModalOpened(val)}
+      />
 
-          <FormControl id="signup-password" name="password" label="Password">
-            {fieldProps => <PasswordInput {...fieldProps} />}
-          </FormControl>
-
-          <FormControl
-            id="signup-password-confirm"
-            name="passwordConfirm"
-            label="Confirm your password"
-          >
-            {fieldProps => <PasswordInput {...fieldProps} />}
-          </FormControl>
-
-          {featureFlags?.ACCEPT_TOS_ON_SIGNUP && (
-            <FormControl id="signup-tos-accepted" name="isTosAccepted">
-              {fieldProps => (
-                <label>
-                  <input type="checkbox" {...fieldProps} />I accept the terms
-                  and conditions.
-                </label>
-              )}
+      <Formik
+        validationSchema={toFormikValidationSchema(FormSchema)}
+        onSubmit={values => {
+          signup({
+            ...values,
+            tosAcceptedAt: values.isTosAccepted ? new Date() : undefined
+          });
+        }}
+        initialValues={initialValues}
+      >
+        {props => (
+          <Form onSubmit={props.handleSubmit}>
+            <FormControl id="signup-mail" name="email" label="E-mail">
+              {fieldProps => <TextInput {...fieldProps} />}
             </FormControl>
-          )}
 
-          <FormFooter>
-            <ButtonCta type="submit">Sign up</ButtonCta>
-            <ButtonLink to="/login">I don&apos;t have an account</ButtonLink>
-          </FormFooter>
+            <FormControl id="signup-password" name="password" label="Password">
+              {fieldProps => <PasswordInput {...fieldProps} />}
+            </FormControl>
 
-          {error && <FormError error={error.message} />}
-        </Form>
-      )}
-    </Formik>
+            <FormControl
+              id="signup-password-confirm"
+              name="passwordConfirm"
+              label="Confirm your password"
+            >
+              {fieldProps => <PasswordInput {...fieldProps} />}
+            </FormControl>
+
+            {featureFlags?.ACCEPT_TOS_ON_SIGNUP && (
+              <FormControl id="signup-tos-accepted" name="isTosAccepted">
+                {fieldProps => (
+                  <label>
+                    <input type="checkbox" {...fieldProps} />I accept the
+                    <ButtonLink
+                      onClick={() => setIsTosModalOpened(true)}
+                      type="button"
+                    >
+                      Terms and conditions
+                    </ButtonLink>
+                  </label>
+                )}
+              </FormControl>
+            )}
+
+            <FormFooter>
+              <ButtonCta type="submit">Sign up</ButtonCta>
+              <ButtonLink to="/login">I don&apos;t have an account</ButtonLink>
+            </FormFooter>
+
+            {error && <FormError error={error.message} />}
+          </Form>
+        )}
+      </Formik>
+    </>
   );
 };

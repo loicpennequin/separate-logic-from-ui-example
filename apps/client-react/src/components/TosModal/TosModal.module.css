@@ -1,0 +1,21 @@
+.tosModal {
+  max-height: 75vh;
+  overflow: auto;
+}
+
+.tosModal .content {
+  padding: var(--space-10);
+}
+.tosModal .content ol {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.8;
+  gap: var(--space-3);
+  list-style-type: decimal;
+}
+
+.tosModal .footerInner {
+  padding: var(--space-3);
+  display: flex;
+  justify-content: space-between;
+}

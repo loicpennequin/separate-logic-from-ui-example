@@ -47,7 +47,7 @@ const onSubmit = handleSubmit(values => {
 
 <template>
   <UiForm @submit.prevent="onSubmit" class="signup-form">
-    <AppToSModal v-model:is-opened="isTosModalOpened" />
+    <AppToSModal v-model:is-opened="isTosModalOpened" is-controlled />
 
     <UiFormControl
       id="signup-mail"

@@ -1,6 +1,6 @@
 .modalContent {
   width: 100%;
-  max-width: var(--modal-contentm-max-with);
+  max-width: var(--modal-content-max-width);
   transition: all var(--duration-2);
   align-self: flex-start;
   overflow-y: auto;

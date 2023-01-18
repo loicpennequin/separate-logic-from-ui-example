@@ -16,16 +16,20 @@
   --color-on-surface: var(--color-text-dark);
 
   --color-primary: hsl(var(--cyan), 32%);
-  --color-on-primary: var(--color-text-light);
-  
   --color-primary-dark: hsl(var(--cyan), 26%);
-  --color-on-primary-dark: var(--color-text-light);
-  
   --color-primary-darker: hsl(var(--cyan), 18%);
+  --color-on-primary: var(--color-text-light);
+  --color-on-primary-dark: var(--color-text-light);
   --color-on-primary-darker: var(--color-text-light);
 
   --color-error: hsl(var(--red), 50%);
+  --color-error-dark: hsl(var(--red), 40%);
+  --color-error-darker: hsl(var(--red), 35%);
   --color-on-error: var(--color-text-light);
+  --color-on-error-dark: var(--color-text-light);
+  --color-on-error-darker: var(--color-text-light);
+
+  --color-warning: hsl(var(--yellow), 65%);
   
   --font-primary: Lato;
 

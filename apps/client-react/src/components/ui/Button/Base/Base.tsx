@@ -39,6 +39,7 @@ export const ButtonBase: FC<PropsWithChildren<Props>> = ({
   } as const;
 
   const style = {
+    ...props.style,
     '--button-base-font-size': `var(--text-size-${sizeLookup[size]})`
   } as CSSProperties;
 

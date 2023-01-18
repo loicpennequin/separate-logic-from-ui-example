@@ -1,7 +1,7 @@
 import type { FC, HTMLAttributes, PropsWithChildren, ReactNode } from 'react';
 import styles from './Cta.module.css';
 import clsx from 'clsx';
-import { ButtonFull } from '../Full/Full';
+import { ButtonFull, type ButtonFullVariant } from '../Full/Full';
 
 type Props = HTMLAttributes<HTMLButtonElement> & {
   isLoading?: boolean;
@@ -11,6 +11,7 @@ type Props = HTMLAttributes<HTMLButtonElement> & {
   leftElement?: ReactNode;
   rightElement?: ReactNode;
   type?: 'submit' | 'button' | 'reset';
+  variant?: ButtonFullVariant;
 };
 
 export const ButtonCta: FC<PropsWithChildren<Props>> = ({

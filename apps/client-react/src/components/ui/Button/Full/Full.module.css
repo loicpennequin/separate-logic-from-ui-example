@@ -1,12 +1,12 @@
 .buttonFull {
-  background-color: var(--color-primary);
-  color: var(--color-on-primary);
+  background-color: var(--button-full-bg);
+  color: var(--button-full-text);
 }
 .buttonFull:hover {
-  background-color: var(--color-primary-dark);
-  color: var(--color-on-primary-dark);
+  background-color: var(--button-full-bgHover);
+  color: var(--button-full-textHover);
 }
 .buttonFull:focus {
-  background-color: var(--color-primary-darker);
-  color: var(--color-on-primary-darker);
+  background-color: var(--button-full-bgFocus);
+  color: var(--button-full-textFocus);
 }

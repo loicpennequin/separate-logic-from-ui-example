@@ -10,15 +10,20 @@ import { Dialog } from '@headlessui/react';
 import { Surface } from '../../Surface/Surface';
 import styles from './ModalContent.module.css';
 import { ModalHeader } from '../ModalHeader/ModalHeader';
+import clsx from 'clsx';
 
 type Props = {
   size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   headerElement?: ReactNode;
+  footerElement?: ReactNode;
+  className?: string;
 };
 export const ModalContent: FC<PropsWithChildren<Props>> = ({
-  size,
+  size = 'lg',
+  className,
   children,
-  headerElement
+  headerElement,
+  footerElement
 }) => {
   const style = {
     '--modal-content-max-width': `var(--breakpoints-${size})`
@@ -27,11 +32,15 @@ export const ModalContent: FC<PropsWithChildren<Props>> = ({
   const { title } = useModal();
 
   return (
-    <Dialog.Panel as="div" className={styles.modalContent} style={style}>
+    <Dialog.Panel
+      as="div"
+      className={clsx(className, styles.modalContent)}
+      style={style}
+    >
       <Surface className={styles.inner}>
         {headerElement ?? title ? <ModalHeader v-if="title" /> : null}
         <div className={styles.body}>{children}</div>
-        <footer></footer>
+        {footerElement && <footer>{footerElement}</footer>}
       </Surface>
     </Dialog.Panel>
   );

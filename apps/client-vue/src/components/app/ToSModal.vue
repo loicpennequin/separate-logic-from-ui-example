@@ -2,19 +2,18 @@
 import { useAcceptTos, useLatestTos } from '@/composables/tos';
 import { isDefined } from '@daria/shared';
 
-const props = defineProps<{ isOpened?: boolean }>();
+const props = defineProps<{ isOpened?: boolean; isControlled?: boolean }>();
 const emit = defineEmits<{
   (e: 'update:isOpened', value: boolean): void;
 }>();
 
-const isControlled = computed(() => isDefined(props.isOpened));
 const query = useLatestTos();
 const { data: tos } = query;
 const { data: session, refetch } = useSession();
 
 const isOpened = computed({
   get() {
-    if (isControlled.value) return props.isOpened as boolean;
+    if (props.isControlled) return props.isOpened as boolean;
 
     if (!session.value) return false;
     if (!tos.value) return false;
@@ -41,7 +40,7 @@ const { mutate: acceptTos } = useAcceptTos({
   <UiModal
     v-model:is-opened="isOpened"
     title="Terms and Conditions"
-    :closable="isControlled"
+    :closable="props.isControlled"
   >
     <UiModalContent class="tos-modal">
       <p>Please accept our updated terms and conditions</p>
